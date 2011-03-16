@@ -53,6 +53,7 @@ Webcomic::Application.configure do
   
   PAPERCLIP_STORAGE_CONFIG = { :storage => :s3, 
                                :bucket => 'anotherwebcomic',
+                               :path => "anotherwebcomic/:attachment/:style/:id.:extension",
                                :s3_credentials => {
                                   :access_key_id => ENV['S3_KEY'],
                                   :secret_access_key => ENV['S3_SECRET'] }} 
