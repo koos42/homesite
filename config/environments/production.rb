@@ -49,7 +49,7 @@ Webcomic::Application.configure do
 
   
   # Does mailing stuff for devise.
-  config.action_mailer.default_url_options = { :host => 'koos42.com' }
+  config.action_mailer.default_url_options = { :host => 'anotherwebcomic.heroku.com' }
   
   PAPERCLIP_STORAGE_CONFIG = {
                        :storage => :s3
