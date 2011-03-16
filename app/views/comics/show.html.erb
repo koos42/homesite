@@ -1,0 +1,30 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b>Title:</b>
+  <%= @comic.title %>
+</p>
+
+<p>
+  <b>Date:</b>
+  <%= @comic.date %>
+</p>
+
+<p>
+  <b>Photo:</b>
+  <%= image_tag @comic.photo.url %>
+</p>
+
+<p>
+  <b>Pubish:</b>
+  <%= @comic.publish %>
+</p>
+
+<p>
+  <b>Blurb:</b>
+  <%= @comic.blurb %>
+</p>
+
+
+<%= link_to 'Edit', edit_comic_path(@comic) %> |
+<%= link_to 'Back', comics_path %>
