@@ -7,14 +7,18 @@
     <th>Username</th>
     <th>Email</th>
     <th>Is_author</th>
+    <th>action</th>
   <tr>
 
-  <% @users.each do |user| %>
-    <tr>
-      <td><%= user.username %></td>
-      <td><%= user.email %></td>
-      <td><%= 'X' if user.is_author %></td>
-    <tr>
+  <% if @users %>
+    <% @users.each do |user| %>
+      <tr>
+        <td><%= user.username %></td>
+        <td><%= user.email %></td>
+        <td><%= 'X' if user.is_author %></td>
+        <td><%= link_to "view", user %></td>
+      <tr>
+    <% end %>
   <% end %>
 </table>
 
