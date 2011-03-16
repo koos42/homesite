@@ -85,8 +85,6 @@ class ComicsController < ApplicationController
   # DELETE /comics/1.xml
   def destroy
     @comic = Comic.find(params[:id])
-    @comic.photo.nil
-    @comic.save
     @comic.destroy
 
     respond_to do |format|

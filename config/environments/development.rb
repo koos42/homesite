@@ -25,5 +25,7 @@ Webcomic::Application.configure do
 
   # Does mailing stuff for devise.
   config.action_mailer.default_url_options = { :host => 'localhost:3000' }
+
+  PAPERCLIP_STORAGE_CONFIG = { :storage => :filesystem }
 end
 

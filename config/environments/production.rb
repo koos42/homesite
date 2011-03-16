@@ -50,4 +50,13 @@ Webcomic::Application.configure do
   
   # Does mailing stuff for devise.
   config.action_mailer.default_url_options = { :host => 'koos42.com' }
+  
+  PAPERCLIP_STORAGE_CONFIG = {
+                       :storage => :s3
+                       :s3_credentials => {
+                          :access_key_id => ENV['S3_KEY'],
+                          :secret_access_key => ENV['S3_SECRET']
+                     }
+                   }
+  
 end
