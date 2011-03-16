@@ -24,6 +24,6 @@
     <b>Blurb:</b>
     <%= @comic.blurb %>
   </p>
+  <%= link_to 'Edit', edit_comic_path(@comic) %> |
+  <%= link_to 'Back', comics_path %>
 <% end %>
-<%= link_to 'Edit', edit_comic_path(@comic) %> |
-<%= link_to 'Back', comics_path %>
