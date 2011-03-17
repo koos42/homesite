@@ -1,7 +1,10 @@
 Webcomic::Application.routes.draw do
+  root :to => "comics#latest"
+  
+  match 'users/sign_up' => 'comics#index'
+  post 'users' => 'users#create'
   devise_for :users
 
-  root :to => "comics#latest"
   resources :comics
   resources :users
 
