@@ -29,6 +29,7 @@ class UsersController < ApplicationController
     end
   end
 
+  # only an author can make new users.
   def create
     @user = User.new(params[:user])
 
@@ -49,14 +50,15 @@ class UsersController < ApplicationController
 
   def update
     @user = User.find(params[:id])
+    is_author = params[:user][:is_author] if params[:user]
 
     if params[:user] && params[:user][:password].blank? && params[:user][:password_confirmation].blank?
       params[:user].delete(:password)
       params[:user].delete(:password_confirmation)
     end
 
-    respond_to do |format|    
-      if @user.update_attributes(params[:user])
+    respond_to do |format|
+      if @user.update_attributes(params[:user]) && @user.update_attribute(:is_author, is_author)
         format.html { redirect_to(@user, :notice => 'User was successfully updated.') }
         format.xml  { head :ok }
       else

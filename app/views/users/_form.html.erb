@@ -20,6 +20,10 @@
     <%= f.text_field :email %>
   </div>
   <div class="field">
+    <%= f.label :is_author %><br />
+    <%= f.check_box :is_author %>
+  </div>
+  <div class="field">
     <%= f.label :password %> <i>(leave blank if you don't want to change it)</i><br />
     <%= f.password_field :password %>
   </div>
