@@ -1,5 +1,5 @@
 Webcomic::Application.routes.draw do
-  root :to => "comics#latest"
+  root :to => "comics#index"
   
   match 'users/sign_up' => 'comics#index'
   post 'users' => 'users#create'

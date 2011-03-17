@@ -5,7 +5,18 @@ class ComicsController < ApplicationController
   # GET /comics
   # GET /comics.xml
   def index
-    @comics = Comic.all
+    @comics = Comic.order('date desc')
+
+    unless current_user && current_user.is_author
+      @comics.collect! { |comic|
+        if comic.publish && comic.date <= Time.now.to_date
+          comic
+        else
+          nil
+        end
+      }
+    end
+    @comics.compact!
 
     respond_to do |format|
       format.html # index.html.erb
@@ -13,12 +24,6 @@ class ComicsController < ApplicationController
     end
   end
   
-  # GET /comics/latest
-  def latest
-    params[:id] = 'latest'
-    return show
-  end
-
   # GET /comics/1
   # GET /comics/1.xml
   def show
