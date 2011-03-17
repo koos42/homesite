@@ -7,6 +7,7 @@ class ComicsController < ApplicationController
   def index
     @comics = Comic.order('date desc')
 
+    # hide unpublished or future comics from everyone but authors.
     unless current_user && current_user.is_author
       @comics.collect! { |comic|
         if comic.publish && comic.date <= Time.now.to_date
@@ -27,14 +28,16 @@ class ComicsController < ApplicationController
   # GET /comics/1
   # GET /comics/1.xml
   def show
-    if params[:id] == 'latest'
-      @comic = Comic.order('date').last
-    else
-      @comic = Comic.find(params[:id])
+    @comic = Comic.find(params[:id])
+    
+    # allow only authors to view unpublished comics. Everyone else goes to index.
+    unless @comic.publish && @comic.date <= Time.now.to_date || (current_user && current_user.is_author)
+      params.delete :id
+      redirect_to(:action => :index) and return
     end
 
     respond_to do |format|
-      format.html { render :action => 'show' }# show.html.erb
+      format.html # show.html.erb
       format.xml  { render :xml => @comic }
     end
   end
