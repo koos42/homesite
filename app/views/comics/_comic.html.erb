@@ -1,0 +1,16 @@
+<div id="comic" >
+  <% if comic %>
+    <div id="photo">
+      <%= image_tag comic.photo.url %>
+    </div>
+    <div id="comic_info">
+      <%= comic.title %>
+      <%= comic.date %>
+      <%= comic.blurb %>
+      <% if current_user && current_user.is_author %>
+        <%= link_to 'Edit', edit_comic_path(comic) %> |
+        <%= link_to 'Destroy', comic, :confirm => 'Are you sure?', :method => :delete %> 
+      <% end %>
+    </div>
+  <% end %>
+</div>
