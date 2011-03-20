@@ -1,0 +1,40 @@
+div, img, h1, h2, h3, h4, h5, a {
+  margin: 0; padding: 0;
+}
+a:hover, a:active, a:visited, a:link {
+  text-decoration: none;
+  color: #000000;
+}
+
+body {
+  color: #000000;
+  font-family: "Helvetica", Helvetica, Arial, sans-serif;
+}
+
+#logo {
+  position: relative;
+  width: auto;
+  top: -40px;
+  left: -30px;
+}
+
+#top_nav {
+  position: absolute;
+  top: 100px;
+  left: 170px;
+  width: auto;
+}
+
+#archive_link {
+  z-index: 20;
+  position: relative;
+  left: 5px;
+}
+
+#about_link {
+  z-index: 10;
+  position: relative;
+  top: -15px;
+  left: -15px;
+}
+
