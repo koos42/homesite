@@ -44,3 +44,7 @@ archive.setup = function(){
   });
   archive.unhide_comic();
 };
+
+$(document).ready(function(){
+  archive.setup();
+});

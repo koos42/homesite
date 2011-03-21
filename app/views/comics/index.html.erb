@@ -1,3 +1,4 @@
+<%= javascript_include_tag "index" %>
 <div id="archive">
   <% @comics.each do |comic| %>
     <div class="archive_comic" id="<%= comic.id %>">
@@ -15,5 +16,6 @@
       <%= link_to('New Comic', new_comic_path) %>
     </div>
   <% end %>
+  <div class="clear"> </div>
 </div>
 <%= render :partial => 'comic', :locals => {:comic => @comics.first, :hidden => true} %>

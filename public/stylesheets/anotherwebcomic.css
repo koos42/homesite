@@ -16,6 +16,11 @@ body {
   font-family: "Helvetica", Helvetica, Arial, sans-serif;
 }
 
+.clear {
+  line-height: 1px;
+  clear: both;
+}
+
 #logo {
   position: absolute;
   width: auto;
