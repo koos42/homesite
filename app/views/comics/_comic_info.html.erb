@@ -1,0 +1,12 @@
+<% return unless comic %>
+<div class="comic_info">
+  <h1 class="title"><%= comic.title %></h1>
+  <div class="date"><%= comic.date %></div>
+  <div class="blurb"><%= comic.blurb %></div>
+  <% if current_user && current_user.is_author %>
+    <div class="comic_controls">
+      <%= link_to 'Edit', edit_comic_path(comic) %> |
+      <%= link_to 'Destroy', comic, :confirm => 'Are you sure?', :method => :delete %> 
+    </div>
+  <% end %>
+</div>

@@ -6,21 +6,26 @@ a:hover, a:active, a:visited, a:link {
   color: #000000;
 }
 
+div.notice, div.alert {
+  line-height: 0;
+  position: absolute;
+}
+
 body {
   color: #000000;
   font-family: "Helvetica", Helvetica, Arial, sans-serif;
 }
 
 #logo {
-  position: relative;
+  position: absolute;
   width: auto;
-  top: -40px;
+  top: -60px;
   left: -30px;
 }
 
 #top_nav {
   position: absolute;
-  top: 100px;
+  top: 70px;
   left: 170px;
   width: auto;
 }
@@ -38,3 +43,61 @@ body {
   left: -15px;
 }
 
+#content {
+  margin-top: 150px;
+  margin-left: 200px;
+}
+
+.comic_info {
+  display: none;
+  visibility: hidden;
+}
+
+#comic .comic_info {
+  display: block;
+  visibility: visible;
+}
+
+#comic.hidden {
+  visibility: hidden;
+  display: none;
+}
+
+.title {
+  float: left;
+  font-size: 25pt;
+  height: 40px;
+}
+
+.date {
+ float: left; 
+ font-size: 12pt;
+ padding-top: 16px;
+}
+
+.blurb {
+  clear: both;
+}
+
+#archive {
+  padding-top: 10px;
+}
+
+.archive_comic {
+  clear: both;
+}
+
+.img_links {
+  visibility: hidden;
+  display: none;
+}
+
+.new_comic {
+  clear: both;
+}
+
+#user_nav {
+  text-align: center;
+  margin: auto;
+  margin-top: 100px;
+}

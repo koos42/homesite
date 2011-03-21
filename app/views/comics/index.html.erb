@@ -1,23 +1,19 @@
 <div id="archive">
   <% @comics.each do |comic| %>
-    <div class="archive_comic">
-      <div><%= link_to comic.title, comic, :class => 'show' %></div>
+    <div class="archive_comic" id="<%= comic.id %>">
+      <h1 class="title"><%= link_to comic.title, comic, :class => 'show' %></h1>
       <div class="date"><%= comic.date %></div>
-      <div class="info">
-        <div class="date"><%= comic.date %></div>
-        <div class="blurb"><%= comic.blurb %></div>
+      <%= render :partial => 'comic_info', :locals => {:comic => comic} %>
+      <div class="img_links">
+        <%= link_to comic.title, comic.photo.url, :class => 'full' %> 
+        <%= link_to comic.title, comic.photo.url(:thumb), :class => 'thumb' %>
       </div>
-      <div class="links">
-        <%= link_to comic.title, comic.photo.url, :class => 'full' %> |
-        <%= link_to comic.title, comic.photo.url(:thumb), :class => 'thumb' %> |
-        <%= link_to 'Show', comic %>
-        <% if current_user && current_user.is_author %> 
-          | <%= link_to 'Edit', edit_comic_path(comic) %> |
-          <%= link_to 'Destroy', comic, :confirm => 'Are you sure?', :method => :delete %> 
-        <% end %>
-      </div>
-    <div>
+    </div>
   <% end %>
-<%= link_to('New Comic', new_comic_path) if current_user && current_user.is_author %>
+  <% if current_user && current_user.is_author %>
+    <div class="new_comic">
+      <%= link_to('New Comic', new_comic_path) %>
+    </div>
+  <% end %>
 </div>
-<%= render :partial => 'comic', :locals => {:comic => @comics.first} %>
+<%= render :partial => 'comic', :locals => {:comic => @comics.first, :hidden => true} %>

@@ -7,6 +7,8 @@
   <%= csrf_meta_tag %>
 </head>
 <body>
+  <div class="notice"><%= notice %></div>
+  <div class="alert"><%= alert %></div>
   <div id="logo">
     <%= link_to image_tag('/images/logo.png', :alt => "anotherwebcomic.com"), '/' %>
   </div>
@@ -14,9 +16,7 @@
     <div id="archive_link">
       <%= link_to image_tag('/images/archive_link.png', 
                             :alt => 'archive', 
-                            :title => 'archive'), 
-                  :controller => 'comics', 
-                  :action => 'index' %>
+                            :title => 'archive'), '/' %>
     </div>
     <div id="about_link">
       <%= link_to image_tag('/images/about_link.png', 
@@ -24,18 +24,16 @@
                             :title => 'archive'), '#about' %>
     </div>
   </div>
-  <p class="notice"><%= notice %></p>
-  <p class="alert"><%= alert %></p>
-
+  <div id="content">
 <%= yield %>
-  <div id="user_nav">
-    <% if user_signed_in? %>
-      Signed in as <%= current_user.username %>. Not you?
-      <%= link_to "Sign out", destroy_user_session_path %>
-    <% else %>
-      <% # link_to "Sign up", new_user_registration_path %>
-      <%= link_to "Sign in", new_user_session_path %>
-    <% end %>
   </div>
+  <% if user_signed_in? %>
+    <div id="user_nav">
+      Signed in as <%= current_user.username %>.
+      <%= link_to "Sign out", destroy_user_session_path %>
+    </div>
+  <% else %>
+      <% # link_to "Sign up", new_user_registration_path %>
+  <% end %>
 </body>
 </html>
