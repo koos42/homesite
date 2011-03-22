@@ -47,7 +47,7 @@ archive.setup = function(){
   $('.archive_comic').each(function(index,comic){
     var comic_id = $(comic).attr('id');
 
-    $(comic).find('h1 a').click(function(){
+    $(comic).find('a').click(function(){
       archive.show_comic({ 'id' : comic_id });
       return false;
     });

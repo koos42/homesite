@@ -85,7 +85,32 @@ body {
 }
 
 #archive {
-  padding-top: 10px;
+  position: absolute;
+  width: 600px;
+  color: #FFFFFF;
+  z-index: 20;
+  top: 53px;
+  left: 175px;
+}
+
+#archive a:hover, #archive a:active, #archive a:visited, 
+#archive a:link, #archive a {
+  color: #FFFFFF;
+}
+
+#archive_top {
+  height: 60px;
+  background: url(/images/archive_bg_top.png) no-repeat bottom left;
+}
+
+#archive_mid {
+  background: url(/images/archive_bg_mid.png) repeat-y left;
+  padding-left: 100px;
+}
+
+#archive_bottom {
+  background: url(/images/archive_bg_bottom.png) no-repeat top left;
+  height: 60px;
 }
 
 .archive_comic {
@@ -101,8 +126,14 @@ body {
   clear: both;
 }
 
+#comic {
+
+}
+
 #user_nav {
   text-align: center;
   margin: auto;
   margin-top: 100px;
 }
+
+
