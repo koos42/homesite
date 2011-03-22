@@ -10,7 +10,7 @@
       <li> <%= link_to 'thumb image', comic.photo.url(:thumb), :class => 'thumb' %> </li>
     </ul>
   </div>
-  <% if current_user && current_user.is_author %>
+  <% if user_is_author? %>
     <div class="controls">
       <%= link_to 'Edit', edit_comic_path(comic), :class => 'edit' %> |
       <%= link_to 'Destroy', comic, :confirm => 'Are you sure?', :method => :delete, :class => 'destroy' %> 

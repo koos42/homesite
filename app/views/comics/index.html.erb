@@ -3,13 +3,12 @@
   <% @comics.each do |comic| %>
     <div class="archive_comic" id="<%= comic.id %>">
       <div class="title"><%= link_to comic.title, comic, :class => 'show' %></div>
-      <div class="date"><%= comic.date %></div>
       <%= render :partial => 'comic_info', :locals => {:comic => comic} %>
     </div>
   <% end %>
-  <% if current_user && current_user.is_author %>
-    <div class="new_comic clear">
-      <%= link_to('New Comic', new_comic_path) %>
+  <% if user_is_author? %>
+    <div class="new_comic">
+      <%= link_to('+ New Comic', new_comic_path) %>
     </div>
   <% else %>
     <div class="clear" > </div>

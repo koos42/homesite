@@ -23,12 +23,14 @@ body {
   visibility: hidden;
 }
 
+
 #logo {
   position: absolute;
   width: auto;
   top: -60px;
   left: -30px;
 }
+
 
 #top_nav {
   margin-top: 20px;
@@ -55,31 +57,14 @@ body {
   float: none;
 }
 
+
+
 #content {
-  margin-top: 40px;
+  margin-top: 20px;
   margin-left: 230px;
 }
 
-#comic {
-  float: left;
-}
 
-#comic.hidden {
-  visibility: hidden;
-  display: none;
-}
-
-#comic #title {
-  float: left;
-}
-
-#comic #date {
-  float: right;
-}
-
-#comic #photo {
-  clear: both;
-}
 
 #archive {
   color: #000000;
@@ -97,6 +82,33 @@ body {
 .new_comic {
   clear: both;
 }
+
+
+
+#comic {
+  float: left;
+}
+
+#comic.hidden {
+  visibility: hidden;
+  display: none;
+}
+
+#comic #title {
+  float: left;
+}
+
+#comic #date {
+  float: left;
+  padding-top: 16px;
+  color: #888888;
+}
+
+#comic #photo {
+  clear: both;
+}
+
+
 
 #footer {
   padding-top: 50px;
