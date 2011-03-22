@@ -32,6 +32,16 @@ archive.unhide_comic = function(){
 }
 
 archive.setup = function(){
+  
+  // hide the archive...
+  $('#archive').hide();// addClass('hidden');
+  
+  // setup the onclick to toggle the hide and show of the archive.
+  $('#archive_link').click(function(){
+    $('#archive').toggle();
+    return false;
+  });
+  
   // go through all of hte archive links and set them up so that when clicked
   // they do a show comic, with their own id.
   $('.archive_comic').each(function(index,comic){
