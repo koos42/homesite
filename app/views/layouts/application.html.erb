@@ -14,26 +14,25 @@
   </div>
   <div id="top_nav">
     <div id="archive_link">
-      <%= link_to image_tag('/images/archive_link.png', 
-                            :alt => 'archive', 
-                            :title => 'archive'), '/' %>
+      <%= link_to "Archive", '/' %>
     </div>
     <div id="about_link">
-      <%= link_to image_tag('/images/about_link.png', 
-                            :alt => 'archive', 
-                            :title => 'archive'), '#about' %>
+      <%= link_to 'About', '#about' %>
     </div>
+    <div class="clear"> </div>
   </div>
   <div id="content">
 <%= yield %>
   </div>
-  <% if user_signed_in? %>
-    <div id="user_nav">
-      Signed in as <%= current_user.username %>.
-      <%= link_to "Sign out", destroy_user_session_path %>
-    </div>
-  <% else %>
-      <% # link_to "Sign up", new_user_registration_path %>
-  <% end %>
+  <div id="footer">
+    <% if user_signed_in? %>
+      <div id="user_nav">
+        Signed in as <%= current_user.username %>.
+        <%= link_to "Sign out", destroy_user_session_path %>
+      </div>
+    <% else %>
+        <% # link_to "Sign up", new_user_registration_path %>
+    <% end %>
+  </div>
 </body>
 </html>

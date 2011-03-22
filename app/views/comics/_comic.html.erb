@@ -2,6 +2,14 @@
    hidden ||= nil
 %>
 <div id="comic" <%= "class='hidden'" if hidden %> >
+  <h1 id="title"><%= comic.title %></h1>
+  <div id="date"><%= comic.date %></div>
   <div id="photo"><%= image_tag comic.photo.url %></div>
-  <%= render :partial => 'comic_info', :locals => {:comic => comic} %>
+  <div id="blurb"><%= comic.blurb %></div>
+  <% if current_user && current_user.is_author %>
+    <div class="controls">
+      <%= link_to 'Edit', edit_comic_path(comic), :class => 'edit' %> |
+      <%= link_to 'Destroy', comic, :confirm => 'Are you sure?', :method => :delete, :class => 'destroy' %> 
+    </div>
+  <% end %>
 </div>

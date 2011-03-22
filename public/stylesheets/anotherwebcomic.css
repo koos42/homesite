@@ -1,10 +1,6 @@
-div, img, h1, h2, h3, h4, h5, a {
-  margin: 0; padding: 0;
-}
-a:hover, a:active, a:visited, a:link {
-  text-decoration: none;
-  color: #000000;
-}
+div, img, h1, h2, h3, h4, h5, a { margin: 0; padding: 0; }
+html, body { padding: 0; margin: 0; }
+a:hover, a:active, a:visited, a:link { text-decoration: none; color: #000000; }
 
 div.notice, div.alert {
   line-height: 0;
@@ -21,6 +17,12 @@ body {
   clear: both;
 }
 
+/* comic info is always hidden, as it is primarily a means for passing data to JS. */
+.comic_info {
+  display: none;
+  visibility: hidden;
+}
+
 #logo {
   position: absolute;
   width: auto;
@@ -29,38 +31,37 @@ body {
 }
 
 #top_nav {
-  position: absolute;
-  top: 70px;
-  left: 170px;
-  width: auto;
+  margin-top: 20px;
+  padding: 30px 0 30px 210px;
+  background: #000000;
+  color: #FFFFFF;
 }
 
-#archive_link {
-  z-index: 20;
-  position: relative;
-  left: 5px;
+#top_nav a {
+  color: #FFFFFF;
+  font-weight: bold;
+  font-size: 20pt;
 }
 
-#about_link {
-  z-index: 10;
-  position: relative;
-  top: -15px;
-  left: -15px;
+#top_nav a:hover { color: #00A0D0; }
+#top_nav a:active { color: #D0A000; }
+
+#top_nav div {
+  padding-left: 40px;
+  float: left;
+}
+
+#top_nav .clear {
+  float: none;
 }
 
 #content {
-  margin-top: 150px;
-  margin-left: 200px;
+  margin-top: 40px;
+  margin-left: 230px;
 }
 
-.comic_info {
-  display: none;
-  visibility: hidden;
-}
-
-#comic .comic_info {
-  display: block;
-  visibility: visible;
+#comic {
+  float: left;
 }
 
 #comic.hidden {
@@ -68,72 +69,48 @@ body {
   display: none;
 }
 
-.title {
+#comic #title {
   float: left;
-  font-size: 25pt;
-  height: 40px;
 }
 
-.date {
- float: left; 
- font-size: 12pt;
- padding-top: 16px;
+#comic #date {
+  float: right;
 }
 
-.blurb {
+#comic #photo {
   clear: both;
 }
 
 #archive {
-  position: absolute;
-  width: 600px;
-  color: #FFFFFF;
-  z-index: 20;
-  top: 53px;
-  left: 175px;
+  color: #000000;
 }
 
 #archive a:hover, #archive a:active, #archive a:visited, 
 #archive a:link, #archive a {
-  color: #FFFFFF;
-}
-
-#archive_top {
-  height: 60px;
-  background: url(/images/archive_bg_top.png) no-repeat bottom left;
-}
-
-#archive_mid {
-  background: url(/images/archive_bg_mid.png) repeat-y left;
-  padding-left: 100px;
-}
-
-#archive_bottom {
-  background: url(/images/archive_bg_bottom.png) no-repeat top left;
-  height: 60px;
+  color: #000000;
 }
 
 .archive_comic {
   clear: both;
 }
 
-.img_links {
-  visibility: hidden;
-  display: none;
-}
-
 .new_comic {
   clear: both;
 }
 
-#comic {
+#footer {
+  padding-top: 50px;
+  color: #888;
+  clear: both;
+}
 
+#footer a {
+  color: #888;
 }
 
 #user_nav {
   text-align: center;
   margin: auto;
-  margin-top: 100px;
 }
 
 
