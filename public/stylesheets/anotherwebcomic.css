@@ -68,7 +68,6 @@ body {
 }
 
 
-
 #archive {
   width: 100%;
   position: absolute;
@@ -124,10 +123,27 @@ body {
 }
 
 
+#comic_nav {
+  clear: both;
+}
+#comic_nav div {
+  position: fixed;
+  top: 50%;
+  color: #000;
+  font-size: 42pt;
+}
+#next_button {
+  right: 0;
+}
+#prev_button {
+  left: 0;
+}
+
 #comic, #user {
-  float: left;
-  margin-top: 20px;
-  margin-left: 230px;
+  width: 850px;
+  margin:auto;
+  margin-top: 0;
+  padding-top: 10px;
 }
 
 #comic.hidden {
@@ -165,9 +181,6 @@ body {
   position: absolute;
   top: -20px;
   left: 40px;
-}
-
-#comic #photo {
 }
 
 #comic .controls, #user .controls {

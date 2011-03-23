@@ -5,7 +5,7 @@ class ComicsController < ApplicationController
   # GET /comics
   # GET /comics.xml
   def index
-    @comics = Comic.order('date desc')
+    @comics = Comic.order('date asc')
 
     # hide unpublished or future comics from everyone but authors.
     unless current_user && current_user.is_author

@@ -17,6 +17,24 @@ archive.show_comic = function(opts){
   archive.unhide_comic();
 };
 
+// setup next and prev buttons.
+archive.setup_next_prev_buttons = function(id){
+  var next_id = $('#archive #' + id).next().attr('id');
+  var prev_id = $('#archive #' + id).prev().attr('id');
+  
+  if( typeof next_id !== undefined && next_id !== '' && next_id != 'place_holder') {
+    $('#content #next_button').unbind().click(function(){ archive.swap_in_comic(next_id); }).show();
+  } else {
+    $('#content #next_button').unbind().hide();
+  }
+
+  if( typeof prev_id !== undefined && prev_id !== '' && prev_id != 'place_holder') {
+    $('#content #prev_button').unbind().click(function(){ archive.swap_in_comic(prev_id); }).show();
+  } else {
+    $('#content #prev_button').unbind().hide();
+  }
+};
+
 archive.swap_in_comic = function(id){
   var comic_img_link = $('#archive #' + id + ' .img_links .full'); 
   var comic_src = $('#archive #' + id + ' .comic_info');
@@ -28,6 +46,8 @@ archive.swap_in_comic = function(id){
   comic_dst.find('#date').text(comic_src.find('.date').text());
   comic_dst.find('#blurb').text(comic_src.find('.blurb').text());
   comic_dst.find('.controls').replaceWith(comic_src.find('.controls').clone());
+
+  archive.setup_next_prev_buttons(id);
 }
 
 archive.unhide_comic = function(){
@@ -65,11 +85,13 @@ archive.toggle = function(){
 archive.setup = function(){
   
   // hide the archive...
-  $('#archive').hide();// addClass('hidden');
+  $('#archive').hide();
 
   //unhide the comic...
+  console.log( $('.archive_comic').first().attr('id') );
+  archive.swap_in_comic($('.archive_comic').last().attr('id'));
   archive.unhide_comic();
-  
+ 
   // go through all of the archive links and set them up so that when clicked
   // they do a show comic, with their own id.
   $('.archive_comic').each(function(index,comic){
