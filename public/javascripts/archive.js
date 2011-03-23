@@ -34,33 +34,68 @@ archive.unhide_comic = function(){
   $('#comic').removeClass('hidden');
 }
 
+archive.hidden = true;
 archive.toggle = function(){
-  $('#archive').toggle();
+  
+
+  var show = function(){ 
+    $('#archive_link a').addClass('selected');
+    $('#archive').//css('position','relative').
+                  css('left',$(window).width()).
+                  show().
+                  animate({ left: 0 }, 500);
+    archive.hidden = false;
+  };
+
+  var hide = function(){
+    $('#archive_link a').removeClass('selected');
+    $('#archive').//css('position','relative').
+                  css('left',0).
+                  animate({ left: $(window).width() }, 500, function(){ $('#archive').hide();});
+    archive.hidden = true;
+  };
+
+  if( archive.hidden ){
+    show();
+  } else {
+    hide();
+  }
 };
 
 archive.setup = function(){
   
   // hide the archive...
   $('#archive').hide();// addClass('hidden');
+
+  //unhide the comic...
+  archive.unhide_comic();
   
+  // go through all of the archive links and set them up so that when clicked
+  // they do a show comic, with their own id.
+  $('.archive_comic').each(function(index,comic){
+    var comic_id = $(comic).attr('id');
+    var comic_thumb = $(comic).find('.comic_info .thumb').attr('href');
+    var comic_title = $(comic).find('.comic_info .title').text();
+
+    // hide the link name.
+    $(comic).find('.show').hide();
+
+    $(comic).append('<img src="' + comic_thumb + '" />');
+    $(comic).click(function(){
+      archive.toggle();
+      archive.show_comic({ 'id' : comic_id });
+      return false;
+    });
+
+    $(comic).css('float', 'left').
+             css('clear', 'none');
+  });
+
   // setup the onclick to toggle the hide and show of the archive.
   $('#archive_link').click(function(){
     archive.toggle();
     return false;
   });
-  
-  // go through all of hte archive links and set them up so that when clicked
-  // they do a show comic, with their own id.
-  $('.archive_comic').each(function(index,comic){
-    var comic_id = $(comic).attr('id');
-
-    $(comic).find('a.show').click(function(){
-      archive.toggle();
-      archive.show_comic({ 'id' : comic_id });
-      return false;
-    });
-  });
-  archive.unhide_comic();
 };
 
 $(document).ready(function(){

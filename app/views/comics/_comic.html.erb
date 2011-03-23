@@ -4,7 +4,10 @@
 <div id="comic" <%= "class='hidden'" if hidden %> >
   <h1 id="title"><%= comic.title %></h1>
   <div id="date"><%= comic.date %></div>
-  <div id="photo"><%= image_tag comic.photo.url %></div>
+  <div class="clear"> </div>
+  <div id="photo">
+    <%= image_tag comic.photo.url %>
+  </div>
   <div id="blurb"><%= comic.blurb %></div>
   <% if user_is_author? %>
     <div class="controls">

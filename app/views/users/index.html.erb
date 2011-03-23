@@ -1,24 +1,21 @@
-<p id="notice"><%= notice %></p>
+<div id="user">
+  <table>
+    <tr>
+      <th>Username</th>
+      <th>Email</th>
+      <th>Is_author</th>
+      <th>action</th>
+    <tr>
 
-<h1>Listing Users</h1>
-
-<table>
-  <tr>
-    <th>Username</th>
-    <th>Email</th>
-    <th>Is_author</th>
-    <th>action</th>
-  <tr>
-
-  <% if @users %>
-    <% @users.each do |user| %>
-      <tr>
-        <td><%= user.username %></td>
-        <td><%= user.email %></td>
-        <td><%= 'X' if user.is_author %></td>
-        <td><%= link_to "view", user %></td>
-      <tr>
+    <% if @users %>
+      <% @users.each do |user| %>
+        <tr>
+          <td><%= user.username %></td>
+          <td><%= user.email %></td>
+          <td><%= 'X' if user.is_author %></td>
+          <td><%= link_to "view", user %></td>
+        <tr>
+      <% end %>
     <% end %>
-  <% end %>
-</table>
-
+  </table>
+</div>

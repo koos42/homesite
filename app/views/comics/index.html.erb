@@ -1,5 +1,6 @@
 <%= javascript_include_tag "archive" %>
 <div id="archive">
+  <div id="place_holder" ><!-- this holds the empty space under the logo --></div>
   <% @comics.each do |comic| %>
     <div class="archive_comic" id="<%= comic.id %>">
       <div class="title"><%= link_to comic.title, comic, :class => 'show' %></div>

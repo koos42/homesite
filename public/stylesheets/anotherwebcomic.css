@@ -26,9 +26,9 @@ body {
 
 #logo {
   position: absolute;
-  width: auto;
   top: -60px;
   left: -30px;
+  z-index: 10;
 }
 
 
@@ -46,7 +46,12 @@ body {
 }
 
 #top_nav a:hover { color: #00A0D0; }
-#top_nav a:active { color: #D0A000; }
+#top_nav a:active { color: #DC0; }
+
+#top_nav a.selected{
+  color: #F00070;
+}
+
 
 #top_nav div {
   padding-left: 40px;
@@ -60,23 +65,32 @@ body {
 
 
 #content {
-  margin-top: 20px;
-  margin-left: 230px;
 }
 
 
 
 #archive {
-  color: #000000;
+  width: 100%;
+  position: absolute;
+  color: #FFF;
+  background: #000;
+  padding: 5px 0px 20px 0;
 }
 
 #archive a:hover, #archive a:active, #archive a:visited, 
 #archive a:link, #archive a {
-  color: #000000;
+  color: #FFF;
+}
+
+#archive #place_holder {
+  width: 250px;
+  height: 100px;
+  float: left;
 }
 
 .archive_comic {
-  clear: both;
+  float: left;
+  margin: 5px;
 }
 
 .new_comic {
@@ -85,8 +99,10 @@ body {
 
 
 
-#comic {
+#comic, #user {
   float: left;
+  margin-top: 20px;
+  margin-left: 230px;
 }
 
 #comic.hidden {
@@ -104,13 +120,26 @@ body {
   color: #888888;
 }
 
+#comic #blurb {
+  max-width: 550px;
+  float: left;
+  background: #DC0;
+  color: #000000;
+  border: 3px #000000 solid;
+  padding: 4px;
+  border-radius: 10px;
+}
+
 #comic #photo {
+}
+
+#comic .controls, #user .controls {
   clear: both;
 }
 
 
-
 #footer {
+  margin: auto;
   padding-top: 50px;
   color: #888;
   clear: both;
