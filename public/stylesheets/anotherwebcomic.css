@@ -46,7 +46,7 @@ body {
 }
 
 #top_nav a:hover { color: #00A0D0; }
-#top_nav a:active { color: #DC0; }
+#top_nav a:active { color: #FC0; }
 
 #top_nav a.selected{
   color: #F00070;
@@ -93,10 +93,35 @@ body {
   margin: 5px;
 }
 
+.bubble_group {
+  color: #000000;
+  padding: 10px;
+  background: url(/images/fc0.png) repeat;
+  width: 120px;
+  border: 3px #000000 solid;
+  border-radius: 10px;
+  position: absolute;
+  bottom: 110px;
+  text-align: center;
+}
+
+.bubble_title {
+  line-height: 10px;
+}
+
+.bubble_group .bubble_spike {
+  position: absolute;
+  background: url(/images/spike_down.png) no-repeat;
+  width: 21px;
+  height: 20px;
+  z-index: 10;
+  bottom: -20px;
+  left: 30px;
+}
+
 .new_comic {
   clear: both;
 }
-
 
 
 #comic, #user {
@@ -120,14 +145,26 @@ body {
   color: #888888;
 }
 
-#comic #blurb {
+#comic #blurb_group {
   max-width: 550px;
   float: left;
-  background: #DC0;
+  background: url(/images/fc0.png) repeat;
   color: #000000;
   border: 3px #000000 solid;
   padding: 4px;
+  margin-top: 20px;
   border-radius: 10px;
+  position: relative;
+}
+
+#comic #blurb_spike {
+  background: url(/images/spike_up.png) no-repeat;
+  width: 21px;
+  height: 20px;
+  z-index: 10;
+  position: absolute;
+  top: -20px;
+  left: 40px;
 }
 
 #comic #photo {

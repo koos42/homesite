@@ -81,11 +81,22 @@ archive.setup = function(){
     $(comic).find('.show').hide();
 
     $(comic).append('<img src="' + comic_thumb + '" />');
+    $(comic).append('<div class="bubble_group"><div class="bubble_spike"> </div class="bubble_title"><div>' +
+      comic_title + '</div></div>');
+    var bubble_group = $(comic).find('.bubble_group')
+    bubble_group.hide();
+
     $(comic).click(function(){
-      archive.toggle();
-      archive.show_comic({ 'id' : comic_id });
-      return false;
-    });
+        archive.toggle();
+        archive.show_comic({ 'id' : comic_id });
+        return false;
+      }).
+      mouseover(function(e){
+        bubble_group.show();
+      }).
+      mouseout(function(e){
+        bubble_group.hide();
+      });
 
     $(comic).css('float', 'left').
              css('clear', 'none');
