@@ -92,30 +92,17 @@ body {
   margin: 5px;
 }
 
-.bubble_group {
+.bubble {
   color: #000000;
   padding: 10px;
-  background: url(/images/fc0.png) repeat;
+  background: #FFFFFF;
   width: 120px;
-  border: 3px #000000 solid;
+  border: 2px #000000 solid;
   border-radius: 10px;
   position: absolute;
   bottom: 110px;
   text-align: center;
-}
-
-.bubble_title {
-  line-height: 10px;
-}
-
-.bubble_group .bubble_spike {
-  position: absolute;
-  background: url(/images/spike_down.png) no-repeat;
-  width: 21px;
-  height: 20px;
-  z-index: 10;
-  bottom: -20px;
-  left: 30px;
+  margin-left: -20px;
 }
 
 .new_comic {
@@ -161,27 +148,21 @@ body {
   color: #888888;
 }
 
-#comic #blurb_group {
+#comic #blurb {
   max-width: 550px;
   float: left;
-  background: url(/images/fc0.png) repeat;
+  background: #FFFFFF;
   color: #000000;
-  border: 3px #000000 solid;
+  border: 2px #000000 solid;
   padding: 4px;
   margin-top: 20px;
   border-radius: 10px;
   position: relative;
 }
 
-#comic #blurb_spike {
-  background: url(/images/spike_up.png) no-repeat;
-  width: 21px;
-  height: 20px;
-  z-index: 10;
-  position: absolute;
-  top: -20px;
-  left: 40px;
+#comic #photo img {
 }
+
 
 #comic .controls, #user .controls {
   clear: both;

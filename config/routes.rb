@@ -7,6 +7,8 @@ Webcomic::Application.routes.draw do
 
   resources :comics
   resources :users
+  match 'comics/:id/next' => 'comics#next'
+  match 'comics/:id/prev' => 'comics#prev'
 
   # The priority is based upon order of creation:
   # first created -> highest priority.

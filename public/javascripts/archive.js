@@ -23,15 +23,15 @@ archive.setup_next_prev_buttons = function(id){
   var prev_id = $('#archive #' + id).prev().attr('id');
   
   if( typeof next_id !== undefined && next_id !== '' && next_id != 'place_holder') {
-    $('#content #next_button').unbind().click(function(){ archive.swap_in_comic(next_id); }).show();
+    $('#comic #next a').unbind().click(function(){ archive.swap_in_comic(next_id); return false;}).show();
   } else {
-    $('#content #next_button').unbind().hide();
+    $('#comic #next a').unbind().hide();
   }
 
   if( typeof prev_id !== undefined && prev_id !== '' && prev_id != 'place_holder') {
-    $('#content #prev_button').unbind().click(function(){ archive.swap_in_comic(prev_id); }).show();
+    $('#content #prev a').unbind().click(function(){ archive.swap_in_comic(prev_id); return false;}).show();
   } else {
-    $('#content #prev_button').unbind().hide();
+    $('#content #prev a').unbind().hide();
   }
 };
 
@@ -57,21 +57,28 @@ archive.unhide_comic = function(){
 archive.hidden = true;
 archive.toggle = function(){
   
-
   var show = function(){ 
     $('#archive_link a').addClass('selected');
+//    $('body').css('overflow', 'hidden');
     $('#archive').//css('position','relative').
                   css('left',$(window).width()).
                   show().
-                  animate({ left: 0 }, 500);
+                  animate({ left: 0 }, 500,
+                  function(){
+                    $('body').css('overflow', 'auto');
+                  });
     archive.hidden = false;
   };
 
   var hide = function(){
     $('#archive_link a').removeClass('selected');
-    $('#archive').//css('position','relative').
-                  css('left',0).
-                  animate({ left: $(window).width() }, 500, function(){ $('#archive').hide();});
+//    $('body').css('overflow', 'hidden');
+    $('#archive').css('left',0).
+                  animate({ left: $(window).width() }, 500, 
+                          function(){ 
+                            $('#archive').hide();
+                            $('body').css('overflow', 'auto');
+                          });
     archive.hidden = true;
   };
 
@@ -88,7 +95,6 @@ archive.setup = function(){
   $('#archive').hide();
 
   //unhide the comic...
-  console.log( $('.archive_comic').first().attr('id') );
   archive.swap_in_comic($('.archive_comic').last().attr('id'));
   archive.unhide_comic();
  
@@ -103,21 +109,23 @@ archive.setup = function(){
     $(comic).find('.show').hide();
 
     $(comic).append('<img src="' + comic_thumb + '" />');
-    $(comic).append('<div class="bubble_group"><div class="bubble_spike"> </div class="bubble_title"><div>' +
-      comic_title + '</div></div>');
-    var bubble_group = $(comic).find('.bubble_group')
-    bubble_group.hide();
+    $(comic).append('<div class="bubble">' + comic_title + '</div>');
+    var bubble = $(comic).find('.bubble')
+    bubble.hide();
 
     $(comic).click(function(){
+        //fucking closures rock!!!!
         archive.toggle();
         archive.show_comic({ 'id' : comic_id });
         return false;
       }).
       mouseover(function(e){
-        bubble_group.show();
+        //fucking closures still rock!!!!
+        bubble.show();
       }).
       mouseout(function(e){
-        bubble_group.hide();
+        //fucking closures rock even more!!!!
+        bubble.hide();
       });
 
     $(comic).css('float', 'left').

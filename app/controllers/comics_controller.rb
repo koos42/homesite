@@ -29,17 +29,25 @@ class ComicsController < ApplicationController
   # GET /comics/1.xml
   def show
     @comic = Comic.find(params[:id])
-    
-    # allow only authors to view unpublished comics. Everyone else goes to index.
-    unless @comic.publish && @comic.date <= Time.now.to_date || (current_user && current_user.is_author)
-      params.delete :id
-      redirect_to(:action => :index) and return
-    end
+    show_comic
+  end
 
-    respond_to do |format|
-      format.html # show.html.erb
-      format.xml  { render :xml => @comic }
+  #takes whatever the id of the comic is, and get the next one.
+  def next
+    comic0 = Comic.find(params[:id])
+    if comic0
+      @comic = Comic.where("date > ?", comic0.date).order("date asc").first 
+    else
+      @comic = nil
     end
+    show_comic
+  end
+  
+  #takes whatever the id of the comic is, and get the next one.
+  def prev
+    comic0 = Comic.find(params[:id])
+    @comic = Comic.where("date < ?", comic0.date).order("date desc").first if comic0
+    show_comic
   end
 
   # GET /comics/new
@@ -98,6 +106,20 @@ class ComicsController < ApplicationController
     respond_to do |format|
       format.html { redirect_to(comics_url) }
       format.xml  { head :ok }
+    end
+  end
+
+  private
+  def show_comic
+    # allow only authors to view unpublished comics. Everyone else goes to index.
+    if !@comic || !( @comic.publish && @comic.date <= Time.now.to_date || (current_user && current_user.is_author) )
+      params.delete :id
+      redirect_to(:action => :index) and return
+    end
+
+    respond_to do |format|
+      format.html { render :action => "show"}
+      format.xml  { render :xml => @comic }
     end
   end
 end
