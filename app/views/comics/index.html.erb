@@ -15,4 +15,5 @@
     <div class="clear" > </div>
   <% end %>
 </div>
+<%= render :partial => 'pages/about', :locals => {:hidden => true } %>
 <%= render :partial => 'comic', :locals => {:comic => @comics.first, :hidden => true} %>

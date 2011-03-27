@@ -16,6 +16,11 @@ body {
   clear: both;
 }
 
+.hidden {
+  visibility: hidden;
+  display: none;
+}
+
 /* comic info is always hidden, as it is primarily a means for passing data to JS. */
 .comic_info {
   display: none;
@@ -110,30 +115,14 @@ body {
 }
 
 
-#comic_nav {
-  clear: both;
-}
-#comic_nav div {
-  position: fixed;
-  top: 50%;
-  color: #000;
-  font-size: 42pt;
-}
-#next_button {
-  right: 0;
-}
-#prev_button {
-  left: 0;
-}
-
-#comic, #user {
+#comic, #user, #about {
   width: 850px;
   margin:auto;
   margin-top: 0;
   padding-top: 10px;
 }
 
-#comic.hidden {
+.hidden {
   visibility: hidden;
   display: none;
 }

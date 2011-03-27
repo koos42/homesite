@@ -89,7 +89,33 @@ archive.toggle = function(){
   }
 };
 
+
+archive.setup_about = function(){
+  // this is all wrapped in a function so it can happen after the page is rendered;
+  archive.about = $("#about");
+  archive.about.button = $("#about_link a");
+  archive.about.hidden = true;
+  archive.about.toggle = function(){
+    if(archive.about.hidden){
+      archive.about.show();
+      archive.about.removeClass('hidden');
+      archive.about.hidden = false;
+      archive.about.button.addClass('selected');
+    } else {
+      archive.about.hide();
+      archive.about.hidden = true;
+      archive.about.button.removeClass('selected');
+    }
+  };
+  archive.about.button.click(function(){
+    archive.about.toggle();
+    return false;
+  });
+};
+
+
 archive.setup = function(){
+  archive.setup_about();
   
   // hide the archive...
   $('#archive').hide();

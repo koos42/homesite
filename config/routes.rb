@@ -1,4 +1,6 @@
 Webcomic::Application.routes.draw do
+  get "pages/about"
+
   root :to => "comics#index"
   
   match 'users/sign_up' => 'comics#index'
