@@ -72,13 +72,13 @@ index.setup_archive = function(){
     var prev_id = index.archive.find('#' + id).prev().attr('id');
     
     if( typeof next_id !== undefined && next_id !== '' && next_id != 'place_holder') {
-      $('#comic #next a').unbind().click(function(){ archive.swap_in_comic(next_id); return false;}).show();
+      $('#comic #next a').unbind().click(function(){ index.archive.swap_in_comic(next_id); return false;}).show();
     } else {
       $('#comic #next a').unbind().hide();
     }
 
     if( typeof prev_id !== undefined && prev_id !== '' && prev_id != 'place_holder') {
-      $('#content #prev a').unbind().click(function(){ archive.swap_in_comic(prev_id); return false;}).show();
+      $('#content #prev a').unbind().click(function(){ index.archive.swap_in_comic(prev_id); return false;}).show();
     } else {
       $('#content #prev a').unbind().hide();
     }
