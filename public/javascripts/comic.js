@@ -6,7 +6,7 @@ if( window.comic === undefined){
 
 comic.setup = function(){
   var blurb = $('#comic #blurb').hide()
-  blurb.css('position', 'absolute').css('margin', '30px 0 0 100px');
+  blurb.css('position', 'absolute').css('margin', '30px 0 0 80px');
   $('#photo img').add(blurb).hover(function(){
                           blurb.show();
                         }, 
