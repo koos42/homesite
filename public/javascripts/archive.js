@@ -4,38 +4,53 @@
 // setup namespace for this functionality.
 if(window.index === undefined){ index = {}; }
 
+index.slide_in = function(sliding_div){
+  if(! sliding_div.hidden){
+    return;
+  }
+  sliding_div.button.addClass('selected');
+  sliding_div.css('left',$(window).width()).
+              css('width','100%').
+              css('position', 'absolute').
+              show().
+              animate({ left: 0,
+                        position:'absolute' }, 500,
+                function(){
+                  sliding_div.show();
+                  $('body').css('overflow','auto');
+                });
+  sliding_div.hidden = false;
+};
+
+index.slide_out = function(sliding_div){
+  if(sliding_div.hidden){
+    return;
+  }
+  sliding_div.button.removeClass('selected');
+  sliding_div.css('left',0).
+              css('width','100%').
+              css('position', 'absolute').
+              animate({ left: $(window).width(),
+                        position: 'absolute' }, 500, 
+                      function(){ 
+                        sliding_div.hide();
+                        $('body').css('overflow', 'auto');
+                      });
+  sliding_div.hidden = true;
+};
+
+
 index.setup_archive = function(){
   index.archive = $('#archive');
   index.archive.button = $('#archive_link a');
   index.archive.hidden = true;
+
   index.archive.toggle = function(){
   
-    var show = function(){ 
-      index.archive.button.addClass('selected');
-      index.archive.css('left',$(window).width()).
-                    show().
-                    animate({ left: 0 }, 500,
-                      function(){
-                        $('body').css('overflow', 'auto');
-                      });
-      index.archive.hidden = false;
-    };
-
-    var hide = function(){
-      index.archive.button.removeClass('selected');
-      index.archive.css('left',0).
-                    animate({ left: $(window).width() }, 500, 
-                            function(){ 
-                              index.archive.hide();
-                              $('body').css('overflow', 'auto');
-                            });
-      index.archive.hidden = true;
-    };
-
     if( index.archive.hidden ){
-      show();
+      index.slide_in(index.archive);
     } else {
-      hide();
+      index.slide_out(index.archive);
     }
   };
 
@@ -142,15 +157,11 @@ index.setup_about = function(){
   index.about.button = $("#about_link a");
   index.about.hidden = true;
   index.about.toggle = function(){
+    index.about.removeClass('hidden');
     if(index.about.hidden){
-      index.about.show();
-      index.about.removeClass('hidden');
-      index.about.hidden = false;
-      index.about.button.addClass('selected');
+      index.slide_in(index.about);
     } else {
-      index.about.hide();
-      index.about.hidden = true;
-      index.about.button.removeClass('selected');
+      index.slide_out(index.about);
     }
   };
   index.about.button.click(function(){
@@ -158,6 +169,7 @@ index.setup_about = function(){
     return false;
   });
 };
+
 
 
 index.setup = function(){
