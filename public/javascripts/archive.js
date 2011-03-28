@@ -108,7 +108,7 @@ index.setup_archive = function(){
   // go through all of the archive links and set them up so that when clicked
   // they do a show comic, with their own id.
   index.archive.setup_links = function(){
-    $('.archive_comic').each(function(index,comic){
+    $('.archive_comic').each(function(doesnt_matter,comic){
       var comic_id = $(comic).attr('id');
       var comic_thumb = $(comic).find('.comic_info .thumb').attr('href');
       var comic_title = $(comic).find('.comic_info .title').text();
@@ -123,8 +123,8 @@ index.setup_archive = function(){
 
       $(comic).click(function(){
           //fucking closures rock!!!!
-          archive.toggle();
-          archive.show_comic({ 'id' : comic_id });
+          index.slide_out(index.archive);
+          index.archive.show_comic({ 'id' : comic_id });
           return false;
         }).
         mouseover(function(e){
