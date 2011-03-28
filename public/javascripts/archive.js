@@ -48,6 +48,7 @@ index.setup_archive = function(){
   index.archive.toggle = function(){
   
     if( index.archive.hidden ){
+      index.slide_out(index.about);
       index.slide_in(index.archive);
     } else {
       index.slide_out(index.archive);
@@ -159,6 +160,7 @@ index.setup_about = function(){
   index.about.toggle = function(){
     index.about.removeClass('hidden');
     if(index.about.hidden){
+      index.slide_out(index.archive);
       index.slide_in(index.about);
     } else {
       index.slide_out(index.about);
