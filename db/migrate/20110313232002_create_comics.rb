@@ -3,7 +3,7 @@ class CreateComics < ActiveRecord::Migration
     create_table :comics do |t|
       t.string :title
       t.date :date
-      t.boolean :pubish
+      t.boolean :publish
       t.text :blurb
 
       t.timestamps
