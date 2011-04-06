@@ -155,6 +155,11 @@ body {
   z-index: 0;
 }
 
+#comic #blurb p {
+  padding: 0;
+  margin: 3px;
+}
+
 #comic #blurb a {
   text-decoration: underline;
 }
