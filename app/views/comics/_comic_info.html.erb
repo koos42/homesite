@@ -3,7 +3,7 @@
 <div class="comic_info">
   <div class="title"><%= comic.title %></div>
   <div class="date"><%= comic.date %></div>
-  <div class="blurb"><%= comic.blurb %></div>
+  <div class="blurb"><%= raw(comic.blurb) %></div>
   <div class="img_links">
     <ul>
       <li> <%= link_to 'full image', comic.photo.url(), :class => 'full' %> </li>
