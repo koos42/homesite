@@ -10,6 +10,13 @@
       <li> <%= link_to 'thumb image', comic.photo.url(:thumb), :class => 'thumb' %> </li>
     </ul>
   </div>
+  <% if comic.has_original && comic.original_photo && comic.original_date %>
+    <div class="original">
+      <%= link_to "See the original from #{comic.original_date} here!", 
+                  comic.original_photo.url,
+                  :class => 'original_link' %>
+    </div>
+  <% end %>
   <% if user_is_author? %>
     <div class="controls">
       <%= link_to 'Edit', edit_comic_path(comic), :class => 'edit' %> |

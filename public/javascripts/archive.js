@@ -94,6 +94,8 @@ index.setup_archive = function(){
 
     comic_dst.find('#title').text(comic_src.find('.title').text());
     comic_dst.find('#date').text(comic_src.find('.date').text());
+    comic_dst.find('#original *').remove();
+    comic_dst.find('#original').append(comic_src.find('.original').clone());
     comic_dst.find('#blurb *').remove();
     comic_dst.find('#blurb').append(comic_src.find('.blurb').clone());
     comic_dst.find('.controls').replaceWith(comic_src.find('.controls').clone());

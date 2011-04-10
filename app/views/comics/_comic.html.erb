@@ -11,6 +11,13 @@
       <td>
         <h1 id="title"><%= comic.title %></h1>
         <div id="date"><%= comic.date %></div>
+        <div id="original">
+          <% if comic.has_original && comic.original_photo && comic.original_date %>
+            <%= link_to "See the original from #{comic.original_date} here!", 
+                        comic.original_photo.url,
+                        :class => 'original_link' %>
+          <% end %>
+        </div>
         <div class="clear"> </div>
         <div id="photo">
           <%= image_tag comic.photo.url %>

@@ -134,12 +134,21 @@ body {
 
 #comic #title {
   float: left;
+  position: relative;
+  top: 20px;
 }
 
 #comic #date {
   float: left;
-  padding-top: 16px;
+  padding-top: 36px;
   color: #888888;
+}
+
+#comic #original {
+  float: right;
+  width: 150px;
+  height: 60px;
+  text-align: center;
 }
 
 #comic #blurb {
@@ -170,6 +179,7 @@ body {
   float: left;
 }
 #comic #photo img {
+  max-width: 800px;
   float: left;
 }
 

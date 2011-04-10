@@ -9,4 +9,10 @@ class Comic < ActiveRecord::Base
                         :thumb=> "100x100#" 
                       } 
                     }.merge(PAPERCLIP_STORAGE_CONFIG || {})
+  has_attached_file :original_photo, 
+                      { 
+                        :styles => { 
+                        :thumb=> "100x100#" 
+                      } 
+                    }.merge(PAPERCLIP_STORAGE_CONFIG || {})
 end
