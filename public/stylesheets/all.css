@@ -178,11 +178,13 @@ body {
 #comic #prev {
   float: left;
 }
+#comic #photo {
+  width: 800px;
+}
 #comic #photo img {
   max-width: 800px;
   float: left;
 }
-
 
 #comic .controls, #user .controls {
   clear: both;
