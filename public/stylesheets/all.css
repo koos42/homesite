@@ -152,6 +152,15 @@ body {
   text-align: center;
 }
 
+#comic #original a {
+  display: block;
+  padding: 4px;
+  width: 142px;
+  height: 60px;
+  background: url(/images/original.png) left top no-repeat;
+  font-size: 11pt;
+}
+
 #comic #blurb {
   max-width: 550px;
   background: #fe5;
