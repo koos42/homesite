@@ -7,7 +7,7 @@ if( window.comic === undefined){
 comic.setup = function(){
 
   comic.show_original = function(){
-    var original = $('.original_link');
+    var original = $('#original').find('.original_link');
     comic.current_url = $('#photo img').attr('src');
     $('#photo img').attr('src', original.attr('href'));
   };
