@@ -8,6 +8,7 @@ index.slide_in = function(sliding_div){
   if(! sliding_div.hidden){
     return;
   }
+  $('body').css('overflow-x', 'hidden');
   sliding_div.button.addClass('selected');
   sliding_div.css('left',$(window).width()).
               css('width','100%').
@@ -17,7 +18,7 @@ index.slide_in = function(sliding_div){
                         position:'absolute' }, 500,
                 function(){
                   sliding_div.show();
-                  $('body').css('overflow','auto');
+                  $('body').css('overflow-x','auto');
                 });
   sliding_div.hidden = false;
 };
@@ -26,6 +27,7 @@ index.slide_out = function(sliding_div){
   if(sliding_div.hidden){
     return;
   }
+  $('body').css('overflow-x', 'hidden');
   sliding_div.button.removeClass('selected');
   sliding_div.css('left',0).
               css('width','100%').
@@ -34,7 +36,7 @@ index.slide_out = function(sliding_div){
                         position: 'absolute' }, 500, 
                       function(){ 
                         sliding_div.hide();
-                        $('body').css('overflow', 'auto');
+                        $('body').css('overflow-x', 'auto');
                       });
   sliding_div.hidden = true;
 };
