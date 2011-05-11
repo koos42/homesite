@@ -7,8 +7,12 @@ Webcomic::Application.routes.draw do
   post 'users' => 'users#create'
   devise_for :users
 
-  resources :comics
   resources :users
+  match 'comics/feed' => 'comics#feed'
+  match 'feed' => 'comics#feed',
+        :as => 'feed',
+        :defaults => { :format => 'atom' }
+  resources :comics
   match 'comics/:id/next' => 'comics#next'
   match 'comics/:id/prev' => 'comics#prev'
 

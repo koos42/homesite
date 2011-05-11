@@ -1,6 +1,6 @@
 class ComicsController < ApplicationController
-  before_filter :authenticate_user!, :except => [:show, :index, :latest]
-  before_filter :require_author_status, :except => [:show, :index, :latest]
+  before_filter :authenticate_user!, :except => [:show, :index, :latest, :feed]
+  before_filter :require_author_status, :except => [:show, :index, :latest, :feed]
 
   # GET /comics
   # GET /comics.xml
@@ -106,6 +106,15 @@ class ComicsController < ApplicationController
     respond_to do |format|
       format.html { redirect_to(comics_url) }
       format.xml  { head :ok }
+    end
+  end
+
+  def feed
+    @comics = Comic.order('date asc')
+    
+    respond_to do |format|
+      format.atom { render :layout => false }
+      format.rss { redirect_to feed_path(:format => :atom), :status => :moved_permanently }
     end
   end
 
