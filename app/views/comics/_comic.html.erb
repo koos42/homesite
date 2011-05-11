@@ -6,7 +6,7 @@
   <table><!-- this is the easiest way to vertically center things. yeah, I'm using tables, what? --> 
     <tr>
       <td>
-        <div id="prev"><%= link_to "prev", :action=> 'prev', :id => comic.id %></div>
+        <div id="prev"><%= link_to image_tag("/images/prev.png", :alt => 'prev'), :action=> 'prev', :id => comic.id %></div>
       </td>
       <td>
         <h1 id="title"><%= comic.title %></h1>
@@ -31,7 +31,7 @@
         <% end %>
       </td>
       <td>
-        <div id="next"><%= link_to "next", :action => 'next', :id => comic.id %></div>
+        <div id="next"><%= link_to image_tag("/images/next.png", :alt => 'next'), :action => 'next', :id => comic.id %></div>
       <td>
     </tr>
   </table>
