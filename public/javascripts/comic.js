@@ -19,22 +19,6 @@ comic.setup = function(){
   $('#original').
     hover(comic.show_original, comic.unshow_original).
     click(function(){return false;});
-
-  var blurb = $('#comic #blurb').hide();
-  blurb.css('position', 'absolute').css('margin', '30px 0 0 80px');
-  $('#photo img').
-    add(blurb).
-    hover(
-      function(){
-        blurb.show();
-      }, 
-      function(){
-        blurb.hide();
-      }).
-    click(
-      function(){
-        blurb.hide();
-      });
 };
 
 

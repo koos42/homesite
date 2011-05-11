@@ -22,6 +22,7 @@
         <div id="photo">
           <%= image_tag comic.photo.url %>
         </div>
+        <div class="clear"> </div>
         <div id="blurb"><%= raw(comic.blurb) %></div>
         <% if user_is_author? %>
           <div class="controls">
