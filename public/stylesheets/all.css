@@ -190,6 +190,9 @@ body {
   max-width: 800px;
   float: left;
 }
+#comic #tweet {
+  padding-top: 4px;
+}
 
 #comic .controls, #user .controls {
   clear: both;

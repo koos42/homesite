@@ -23,6 +23,11 @@
           <%= image_tag comic.photo.url %>
         </div>
         <div class="clear"> </div>
+        <div id="tweet">
+          <a href="http://twitter.com/share?url=http://anotherwebcomic.com<%= url_for(comic) %>" class="twitter-share-button" data-count="none">
+            <%= image_tag "tweet_icon.png" %>
+          </a>
+        </div>
         <div id="blurb"><%= raw(comic.blurb) %></div>
         <% if user_is_author? %>
           <div class="controls">

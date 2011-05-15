@@ -101,6 +101,7 @@ index.setup_archive = function(){
     comic_dst.find('#blurb *').remove();
     comic_dst.find('#blurb').append(comic_src.find('.blurb').clone());
     comic_dst.find('.controls').replaceWith(comic_src.find('.controls').clone());
+    comic_dst.find('#tweet a').replaceWith(comic_src.find('div.tweet a').clone());
 
     index.archive.setup_next_prev_buttons(id);
   };

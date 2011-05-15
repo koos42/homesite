@@ -10,6 +10,11 @@
       <li> <%= link_to 'thumb image', comic.photo.url(:thumb), :class => 'thumb' %> </li>
     </ul>
   </div>
+  <div class="tweet">
+    <a href="http://twitter.com/share?url=http://anotherwebcomic.com<%= url_for(comic) %>" class="twitter-share-button" data-count="none">
+      <%= image_tag "tweet_icon.png" %>
+    </a>
+  </div>
   <% if comic.has_original && comic.original_photo && comic.original_date %>
     <div class="original">
       <%= link_to "See the original from #{comic.original_date} here!", 
