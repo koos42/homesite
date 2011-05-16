@@ -193,8 +193,6 @@ body {
 #comic #tweet {
   text-align: right;
   padding-top: 4px;
-  float: right;
-  clear: right;
 }
 
 #comic .controls, #user .controls {
