@@ -192,6 +192,8 @@ body {
 }
 #comic #tweet {
   padding-top: 4px;
+  float: right;
+  clear: right;
 }
 
 #comic .controls, #user .controls {
