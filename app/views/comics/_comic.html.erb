@@ -25,7 +25,7 @@
         <div class="clear"> </div>
         <div id="tweet">
           <a href="http://twitter.com/share?url=http://anotherwebcomic.com<%= url_for(comic) %>" class="twitter-share-button" data-count="none">
-            <%= image_tag "tweet_icon.png" %>
+            <%= image_tag "tweet_icon.png", :alt => 'tweet', :title => 'tweet' %>
           </a>
         </div>
         <div id="blurb"><%= raw(comic.blurb) %></div>

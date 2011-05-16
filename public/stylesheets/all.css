@@ -191,6 +191,7 @@ body {
   float: left;
 }
 #comic #tweet {
+  text-align: right;
   padding-top: 4px;
   float: right;
   clear: right;
