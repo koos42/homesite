@@ -7,6 +7,7 @@
   <%= csrf_meta_tag %>
   <%= auto_discovery_link_tag :atom, "/comics/feed" %>
   <%= auto_discovery_link_tag :rss, "/comics/feed.rss" %>
+  <%= yield :head %>
   <script type="text/javascript">
     var _gaq = _gaq || [];
     _gaq.push(['_setAccount', 'UA-1675572-1']);
