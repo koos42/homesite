@@ -47,6 +47,7 @@ class ComicsController < ApplicationController
   def prev
     comic0 = Comic.find(params[:id])
     @comic = Comic.where("date < ?", comic0.date).order("date desc").first if comic0
+    @comic ||= comic0
     show_comic
   end
 
