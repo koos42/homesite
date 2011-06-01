@@ -14,8 +14,7 @@ index.slide_in = function(sliding_div){
               css('width','100%').
               css('position', 'absolute').
               show().
-              animate({ left: 0,
-                        position:'absolute' }, 500,
+              animate({ left: 0 }, 500,
                 function(){
                   sliding_div.show();
                   $('body').css('overflow-x','auto');
@@ -32,8 +31,7 @@ index.slide_out = function(sliding_div){
   sliding_div.css('left',0).
               css('width','100%').
               css('position', 'absolute').
-              animate({ left: $(window).width(),
-                        position: 'absolute' }, 500, 
+              animate({ left: $(window).width() }, 500, 
                       function(){ 
                         sliding_div.hide();
                         $('body').css('overflow-x', 'auto');
