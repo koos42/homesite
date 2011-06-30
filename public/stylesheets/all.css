@@ -93,6 +93,7 @@ body {
 .archive_comic {
   float: left;
   margin: 5px;
+  position: relative;
 }
 
 .bubble {
@@ -103,9 +104,10 @@ body {
   border: 2px #000000 solid;
   border-radius: 10px;
   position: absolute;
-  bottom: 110px;
+  bottom: 90px;
   text-align: center;
   margin-left: -20px;
+  z-index: 21;
 }
 
 .new_comic {
@@ -170,7 +172,7 @@ body {
 }
 
 #comic #blurb p {
-  margin: 8px;
+  margin: 12px 8px;
 }
 
 #comic #blurb a {
