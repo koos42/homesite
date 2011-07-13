@@ -18,6 +18,10 @@ class ComicsController < ApplicationController
       }
     end
     @comics.compact!
+    
+    @comics.each do | comic |
+      comic.setup_next_and_prev
+    end
 
     respond_to do |format|
       format.html # index.html.erb
@@ -29,6 +33,7 @@ class ComicsController < ApplicationController
   # GET /comics/1.xml
   def show
     @comic = Comic.find(params[:id])
+    @comic.setup_next_and_prev
     show_comic
   end
 

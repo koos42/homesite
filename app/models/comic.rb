@@ -15,4 +15,11 @@ class Comic < ActiveRecord::Base
                         :thumb=> "100x100#" 
                       } 
                     }.merge(PAPERCLIP_STORAGE_CONFIG || {})
+
+  attr_accessor :next, :prev
+
+  def setup_next_and_prev
+    @next = Comic.where("date > ? AND publish = 1", @comic.date).order("date asc").first 
+    @prev = Comic.where("date < ? AND publish = 1", @comic.date).order("date desc").first
+  end
 end
