@@ -19,7 +19,7 @@ class Comic < ActiveRecord::Base
   attr_accessor :next, :prev
 
   def setup_next_and_prev
-    @next = Comic.where("date > ? AND publish = 1", @comic.date).order("date asc").first 
-    @prev = Comic.where("date < ? AND publish = 1", @comic.date).order("date desc").first
+    @next = Comic.where("date > ? AND publish = 1", date).order("date asc").first 
+    @prev = Comic.where("date < ? AND publish = 1", date).order("date desc").first
   end
 end
