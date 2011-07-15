@@ -3,7 +3,9 @@
 one:
   title: MyString
   publish: false  
+  date: 2011-06-06
 
 two:
   title: MyString
   publish: true
+  date: 1986-01-31
