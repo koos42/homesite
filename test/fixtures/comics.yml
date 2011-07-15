@@ -2,12 +2,10 @@
 
 one:
   title: MyString
-  date: 2011-03-13
-  pubish: false
-  blurb: MyText
+  publish: false  
+  date: 2011-06-06
 
 two:
   title: MyString
-  date: 2011-03-13
-  pubish: false
-  blurb: MyText
+  publish: true
+  date: 1986-01-31

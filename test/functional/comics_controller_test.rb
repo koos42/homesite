@@ -1,6 +1,7 @@
 require 'test_helper'
 
 class ComicsControllerTest < ActionController::TestCase
+  include Devise::TestHelpers
   setup do
     @comic = comics(:one)
   end
