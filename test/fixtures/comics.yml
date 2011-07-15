@@ -2,12 +2,8 @@
 
 one:
   title: MyString
-  date: 2011-03-13
-  pubish: false
-  blurb: MyText
+  publish: false  
 
 two:
   title: MyString
-  date: 2011-03-13
-  pubish: false
-  blurb: MyText
+  publish: true
