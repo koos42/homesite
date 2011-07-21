@@ -1,22 +1,13 @@
-<%= javascript_include_tag "archive" %>
-<div class="sliders">
-  <div id="archive">
-    <div id="place_holder" ><!-- this holds the empty space under the logo --></div>
-    <% @comics.each do |comic| %>
-      <div class="archive_comic" id="<%= comic.id %>">
-        <div class="title"><%= link_to comic.title, comic, :class => 'show' %></div>
-        <%= render :partial => 'comic_info', :locals => {:comic => comic} %>
-      </div>
-    <% end %>
-    <% if user_is_author? %>
-      <div class="new_comic">
-        <%= link_to('+ New Comic', new_comic_path) %>
-      </div>
-    <% else %>
-      <div class="clear" > </div>
-    <% end %>
-  </div>
-  <%= render :partial => 'pages/about', :locals => {:hidden => true } %>
-  <div class="clear"></div>
+<div id="archive">
+  <div id="place_holder" ><!-- this holds the empty space under the logo --></div>
+  <% @comics.each do |comic| %>
+    <%= render :partial => 'minimal_comic', :locals => {:comic => comic} %>
+  <% end %>
+  <% if user_is_author? %>
+    <div class="new_comic">
+      <%= link_to('+ New Comic', new_comic_path) %>
+    </div>
+  <% else %>
+    <div class="clear" > </div>
+  <% end %>
 </div>
-<%= render :partial => 'comic', :locals => {:comic => @comics.first, :hidden => true} %>
