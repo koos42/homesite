@@ -16,12 +16,19 @@ class Comic < ActiveRecord::Base
                       } 
                     }.merge(PAPERCLIP_STORAGE_CONFIG || {})
 
-  attr_accessor :next, :prev
+  def next
+    if !@next
+      @next = Comic.where("date > ?", date).where("date <= ?", DateTime.now).where(:publish => true).order("date asc").first
+    else
+      @next
+    end
+  end
 
-  def setup_next_and_prev
-    @next = Comic.where("date > ?", date).where(:publish => true).order("date asc").first 
-    @prev = Comic.where("date < ?", date).where(:publish => true).order("date desc").first
-    puts self.next
-    puts self.prev
+  def prev
+    if !@prev
+      @prev = Comic.where("date < ?", date).where("date <= ?", DateTime.now).where(:publish => true).order("date desc").first
+    else
+      @prev
+    end
   end
 end
