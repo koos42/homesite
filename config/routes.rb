@@ -1,20 +1,20 @@
 Webcomic::Application.routes.draw do
+  root :to => "comics#latest"
+
   get "pages/about"
 
-  root :to => "comics#index"
-  
-  match 'users/sign_up' => 'comics#index'
+  match 'users/sign_up' => 'comics#latest'
   post 'users' => 'users#create'
   devise_for :users
-
   resources :users
+
   match 'comics/feed' => 'comics#feed'
+  match 'comics/latest' => 'comics#latest'
   match 'feed' => 'comics#feed',
         :as => 'feed',
         :defaults => { :format => 'atom' }
   resources :comics
-  match 'comics/:id/next' => 'comics#next'
-  match 'comics/:id/prev' => 'comics#prev'
+
 
   # The priority is based upon order of creation:
   # first created -> highest priority.

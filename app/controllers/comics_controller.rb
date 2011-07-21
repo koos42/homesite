@@ -24,6 +24,13 @@ class ComicsController < ApplicationController
       format.xml  { render :xml => @comics }
     end
   end
+
+  # GET /comics/latest
+  def latest
+    @comic = Comic.where(:publish => true).where("date <= ?",DateTime.now).order('date desc').first
+    @comic.setup_next_and_prev
+    show_comic
+  end
   
   # GET /comics/1
   # GET /comics/1.xml
