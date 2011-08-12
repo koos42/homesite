@@ -63,8 +63,9 @@ body {
 }
 
 div#facebook_like {
-  margin-top: -20px;
+  margin-top: -18px;
   margin-bottom: -20px;
+  margin-right: 5px;
   float: right;
 }
 
