@@ -62,10 +62,15 @@ body {
   float: left;
 }
 
+div#facebook_like {
+  margin-top: -20px;
+  margin-bottom: -20px;
+  float: right;
+}
+
 #top_nav .clear {
   float: none;
 }
-
 
 
 #content {
