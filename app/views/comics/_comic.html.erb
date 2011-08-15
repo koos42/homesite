@@ -16,13 +16,13 @@
         <div id="original">
           <% if comic.has_original && comic.original_photo && comic.original_date %>
             <%= link_to "See the original from #{comic.original_date} here!", 
-                        comic.original_photo.url,
+                        comic.original_photo.url(:display),
                         :class => 'original_link' %>
           <% end %>
         </div>
         <div class="clear"> </div>
         <div id="photo">
-          <%= image_tag comic.photo.url %>
+          <%= image_tag comic.photo.url(:display) %>
         </div>
         <div class="clear"> </div>
         <div id="tweet">
