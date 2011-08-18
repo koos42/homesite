@@ -198,8 +198,9 @@ div#facebook_like {
   max-width: 800px;
   float: left;
 }
-#comic #tweet {
+#comic .social_link {
   text-align: right;
+  float: right;
   padding-top: 4px;
 }
 
