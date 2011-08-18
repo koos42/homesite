@@ -35,6 +35,8 @@ class ComicsController < ApplicationController
   # GET /comics/1.xml
   def show
     @comic = Comic.find(params[:id])
+    @latest_comic = Comic.where(:publish => true).where("date <= ?",DateTime.now).order('date desc').first
+    @first_comic = Comic.where(:publish => true).where("date <= ?",DateTime.now).order('date asc').first
     show_comic
   end
 

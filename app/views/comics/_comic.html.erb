@@ -1,62 +1,77 @@
 <% return unless comic
    hidden ||= nil
 %>
+
+<% content_for :next_button do  %>
+  <% if comic.next %>
+    <div id="next"><%= link_to 'Next Comic', url_for(comic.next), :id => comic.id %></div>
+  <% end %>
+<% end %>
+
+<% content_for :prev_button do  %>
+  <% if comic.prev %>
+    <div id="prev"><%= link_to 'Previous Comic', url_for(comic.prev), :id => comic.id %></div>
+  <% end %>
+<% end %>
+
 <%= javascript_include_tag "comic" %>
 <div id="comic" <%= "class='hidden'" if hidden %> >
-  <table><!-- this is the easiest way to vertically center things. yeah, I'm using tables, what? --> 
-    <tr>
-      <td>
-        <% if comic.prev %>
-          <div id="prev"><%= link_to image_tag("/images/prev.png", :alt => 'prev'), url_for(comic.prev), :id => comic.id %></div>
-        <% end %>
-      </td>
-      <td>
-        <h1 id="title"><%= comic.title %></h1>
-        <div id="date"><%= comic.date %></div>
-        <div id="original">
-          <% if comic.has_original && comic.original_photo && comic.original_date %>
-            <%= link_to "See the original from #{comic.original_date} here!", 
-                        comic.original_photo.url(:display),
-                        :class => 'original_link' %>
-          <% end %>
-        </div>
-        <div class="clear"> </div>
-        <div id="photo">
-          <%= image_tag comic.photo.url(:display) %>
-        </div>
-        <div class="clear"> </div>
-        <div class="social_link" id="tweet">
-          <a href="http://twitter.com/share" class="twitter-share-button" data-url="http://anotherwebcomic.com<%= url_for(comic) %>" data-count="none" data-via="koos42">Tweet</a><script type="text/javascript" src="http://platform.twitter.com/widgets.js"></script>
-        </div>
-        <div class="social_link" id="plus1">
-          <!-- Place this tag where you want the +1 button to render -->
-          <g:plusone size="medium" callback="http://anotherwebcomic.com<%= url_for(comic) %>"></g:plusone>
+  <h1 id="title"><%= comic.title %></h1>
+  <div id="date"><%= comic.date %></div>
+  <div id="original">
+    <% if comic.has_original && comic.original_photo && comic.original_date %>
+      <%= link_to "See the original from #{comic.original_date} here!", 
+                  comic.original_photo.url(:display),
+                  :class => 'original_link' %>
+    <% end %>
+  </div>
+  <div class="clear"> </div>
+  <div id="photo">
+    <%= image_tag comic.photo.url(:display) %>
+  </div>
+  <div class="clear"> </div>
+  <div class="social_link" id="tweet">
+    <a href="http://twitter.com/share" class="twitter-share-button" data-url="http://anotherwebcomic.com<%= url_for(comic) %>" data-count="none" data-via="koos42">Tweet</a><script type="text/javascript" src="http://platform.twitter.com/widgets.js"></script>
+  </div>
+  <div class="social_link" id="plus1">
+    <!-- Place this tag where you want the +1 button to render -->
+    <g:plusone size="medium" callback="http://anotherwebcomic.com<%= url_for(comic) %>"></g:plusone>
 
-          <!--  Place this tag after the last plusone tag -->
-          <script type="text/javascript">
-            (function() {
-              var po = document.createElement('script'); po.type = 'text/javascript'; po.async = true;
-              po.src = 'https://apis.google.com/js/plusone.js';
-              var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(po, s);
-            })();
-          </script>
-        </div>
-        <div class="social_link" id="fb_like">
-          <iframe src="http://www.facebook.com/plugins/like.php?app_id=234735943235066&amp;href=<%= CGI::escape("http://anotherwebcomic.com" + url_for(comic)) %>&amp;send=false&amp;layout=button_count&amp;width=80&amp;show_faces=true&amp;action=like&amp;colorscheme=light&amp;font&amp;height=21" scrolling="no" frameborder="0" style="border:none; overflow:hidden; width:80px; height:21px;" allowTransparency="true"></iframe>
-        </div>
-        <div id="blurb" class="clear"><%= raw(comic.blurb) %></div>
-        <% if user_is_author? %>
-          <div class="controls">
-            <%= link_to 'Edit', edit_comic_path(comic), :class => 'edit' %> |
-            <%= link_to 'Destroy', comic, :confirm => 'Are you sure?', :method => :delete, :class => 'destroy' %> 
-          </div>
-        <% end %>
-      </td>
-      <td>
-        <% if comic.next %>
-          <div id="next"><%= link_to image_tag("/images/next.png", :alt => 'next'), url_for(comic.next), :id => comic.id %></div>
-        <% end %>
-      <td>
-    </tr>
-  </table>
+    <!--  Place this tag after the last plusone tag -->
+    <script type="text/javascript">
+      (function() {
+        var po = document.createElement('script'); po.type = 'text/javascript'; po.async = true;
+        po.src = 'https://apis.google.com/js/plusone.js';
+        var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(po, s);
+      })();
+    </script>
+  </div>
+  <div class="social_link" id="fb_like">
+    <iframe src="http://www.facebook.com/plugins/like.php?app_id=234735943235066&amp;href=<%= CGI::escape("http://anotherwebcomic.com" + url_for(comic)) %>&amp;send=false&amp;layout=button_count&amp;width=80&amp;show_faces=true&amp;action=like&amp;colorscheme=light&amp;font&amp;height=21" scrolling="no" frameborder="0" style="border:none; overflow:hidden; width:80px; height:21px;" allowTransparency="true"></iframe>
+  </div>
+
+  <div id="comic_controls">
+    <div class="comic_control"><%= link_to "Archive", :controller => '/comics', :action => 'index' %></div>
+    <div class="comic_control spacer">&nbsp;</div>
+    <div class="comic_control"><%= link_to 'First Comic', url_for(@first_comic) %></div>
+    <div class="comic_control"><%= link_to 'Latest Comic', url_for(@latest_comic) %></div>
+    <div class="comic_control spacer">&nbsp;</div>
+    <% if comic.next %>
+      <div class="comic_control"><%= link_to 'Next Comic', url_for(comic.next) %></div>
+    <% end %>
+    <% if comic.prev %>
+      <div class="comic_control"><%= link_to 'Previous Comic', url_for(comic.prev) %></div>
+    <% end %>
+    <div class="comic_control spacer">&nbsp;</div>
+    <% if user_is_author? %>
+      <div class="comic_control">
+        <%= link_to 'Edit', edit_comic_path(comic), :class => 'edit' %>
+      </div>
+      <div class="comic_control">
+        <%= link_to 'Destroy', comic, :confirm => 'Are you sure?', :method => :delete, :class => 'destroy' %> 
+      </div>
+    <% end %>
+  </div>
+
+  <div id="blurb"><%= raw(comic.blurb) %></div>
 </div>

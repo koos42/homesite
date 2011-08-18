@@ -1,13 +1,10 @@
-<div id="archive">
-  <div id="place_holder" ><!-- this holds the empty space under the logo --></div>
-  <% @comics.each do |comic| %>
-    <%= render :partial => 'minimal_comic', :locals => {:comic => comic} %>
-  <% end %>
-  <% if user_is_author? %>
-    <div class="new_comic">
-      <%= link_to('+ New Comic', new_comic_path) %>
-    </div>
-  <% else %>
-    <div class="clear" > </div>
-  <% end %>
-</div>
+<% @comics.each do |comic| %>
+  <%= render :partial => 'minimal_comic', :locals => {:comic => comic} %>
+<% end %>
+<% if user_is_author? %>
+  <div class="new_comic">
+    <%= link_to('+ New Comic', new_comic_path) %>
+  </div>
+<% else %>
+  <div class="clear" > </div>
+<% end %>
