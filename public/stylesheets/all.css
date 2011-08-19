@@ -21,13 +21,6 @@ body {
   display: none;
 }
 
-/* comic info is always hidden, as it is primarily a means for passing data to JS. */
-.comic_info {
-  display: none;
-  visibility: hidden;
-}
-
-
 #logo {
   position: absolute;
   top: 0px;
@@ -35,10 +28,9 @@ body {
   z-index: 20;
 }
 
-
 #top_nav {
   margin-top: 20px;
-  padding: 40px 0 70px 170px;
+  padding: 20px 0 53px 170px;
   background: #000000;
   color: #FFFFFF;
 }
@@ -56,9 +48,9 @@ body {
   color: #F00070;
 }
 
-
 #top_nav div {
   padding-left: 40px;
+  margin-top: 6px;
   float: left;
 }
 
@@ -116,16 +108,8 @@ div#facebook_like {
   padding: 0 10px 10px;
 }
 
-#comic #title {
-  float: left;
-  position: relative;
-  top: 20px;
-}
-
-#comic #date {
-  float: left;
-  padding-top: 36px;
-  color: #888888;
+#comic {
+  margin-top: 15px;
 }
 
 #comic #original {
@@ -144,44 +128,70 @@ div#facebook_like {
   font-size: 11pt;
 }
 
-#comic #blurb {
-  clear: both;
+#comic #photo {
   width: 800px;
+  text-align: center;
+  margin-bottom: 10px;
+}
+#comic #photo img {
+  max-width: 800px;
+}
+
+#comic #comic_controls {
+ margin-top: 26px;
+ background: #000;
+ float: right;
+ width: 230px;
+}
+.comic_control h3{
+  color: #000;
+  margin-top: -25px;
+  text-align: center;
+  font-size: 22pt;
+  font-weight: bold;
+}
+.comic_control a {
+  padding: 5px;
+  color: #FFF;
+  font-weight: bold;
+  font-size: 13pt;
+}
+
+.comic_control.spacer{
+  line-height: 5px;
+}
+
+#comic .comic_info {
+  float: left;
+  clear: left;
+  width: 520px;
+  margin: 2px 0;
+}
+
+#comic .social_link {
+  float: left;
+  padding: 0 4px 0 0;
+}
+
+#comic #title {
+  float: left;
+}
+
+#comic #date {
+  color: #666;
+}
+#comic #blurb {
   color: #000000;
-  margin-top: 10px;
   position: relative;
   z-index: 0;
 }
 
 #comic #blurb p {
-  margin: 12px 8px;
+  margin: 12px 0;
 }
 
 #comic #blurb a {
   text-decoration: underline;
-}
-
-#comic #next {
-  float: right;
-}
-#comic #prev {
-  float: left;
-}
-#comic #photo {
-  width: 800px;
-}
-#comic #photo img {
-  max-width: 800px;
-  float: left;
-}
-#comic .social_link {
-  text-align: right;
-  float: right;
-  padding-top: 4px;
-}
-
-#comic .controls, #user .controls {
-  clear: both;
 }
 
 
