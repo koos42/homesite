@@ -15,6 +15,14 @@ body {
   line-height: 1px;
   clear: both;
 }
+.clear_left{
+  line-height: 1px;
+  clear: left;
+}
+.clear_right{
+  line-height: 1px;
+  clear: right;
+}
 
 .hidden {
   visibility: hidden;
@@ -136,19 +144,21 @@ div#facebook_like {
 #comic #photo img {
   max-width: 800px;
 }
-
-#comic #comic_controls {
- margin-top: 26px;
- background: #000;
- float: right;
- width: 230px;
-}
-.comic_control h3{
+#comic_controls_header {
+  float: right;
+  width: 230px;
   color: #000;
-  margin-top: -25px;
   text-align: center;
   font-size: 22pt;
   font-weight: bold;
+}
+#comic #comic_controls {
+  margin-top: -9px;
+  background: #000;
+  float: right;
+  clear: right;
+  width: 220px;
+  padding: 5px;
 }
 .comic_control a {
   padding: 5px;
@@ -162,8 +172,6 @@ div#facebook_like {
 }
 
 #comic .comic_info {
-  float: left;
-  clear: left;
   width: 520px;
   margin: 2px 0;
 }
@@ -172,11 +180,6 @@ div#facebook_like {
   float: left;
   padding: 0 4px 0 0;
 }
-
-#comic #title {
-  float: left;
-}
-
 #comic #date {
   color: #666;
 }

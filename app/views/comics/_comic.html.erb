@@ -29,8 +29,8 @@
   </div>
   <div class="clear"> </div>
 
+  <div id="comic_controls_header">Browse Comics</div>
   <div id="comic_controls">
-    <div class="comic_control"><h3>Browse Comics</h3></div>
     <div class="comic_control"><%= link_to "Archives", :controller => '/comics', :action => 'index' %></div>
     <div class="comic_control spacer">&nbsp;</div>
     <div class="comic_control"><%= link_to 'First Comic', url_for(@first_comic) %></div>
@@ -74,6 +74,7 @@
         })();
       </script>
     </div>
+    <div class="clear_left"></div>
   </div>
   <div id="date" class="comic_info"><%= comic.date %></div>
   <div id="blurb" class="comic_info"><%= raw(comic.blurb) %></div>
