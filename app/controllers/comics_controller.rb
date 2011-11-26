@@ -134,7 +134,7 @@ class ComicsController < ApplicationController
     # allow only authors to view unpublished comics. Everyone else goes to index.
     if !@comic || !( @comic.publish && @comic.date <= Time.now.to_date || (current_user && current_user.is_author) )
       params.delete :id
-      redirect_to(:action => :index) and return
+      redirect_to(:action => :latest) and return
     end
 
     respond_to do |format|

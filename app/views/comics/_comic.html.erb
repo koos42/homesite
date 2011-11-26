@@ -48,7 +48,7 @@
         <%= link_to 'Edit', edit_comic_path(comic), :class => 'edit' %>
       </div>
       <div class="comic_control">
-        <%= link_to 'Destroy', comic, :confirm => 'Are you sure?', :method => :delete, :class => 'destroy' %> 
+        <%= button_to 'Destroy', comic, :confirm => "you sure about that?", :method => :delete, :class => 'destroy' %> 
       </div>
     <% end %>
   </div>

@@ -1,6 +1,7 @@
 source 'http://rubygems.org'
 
-gem 'rails', '3.0.5'
+gem 'rails', '3.0.7'
+gem 'jquery-rails'
 gem 'rake', '0.8.7'
 gem 'devise'
 gem 'sqlite3'
