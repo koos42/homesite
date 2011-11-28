@@ -1,5 +1,6 @@
 <% return unless comic
    hidden ||= nil
+   javascript_include_tag :all
 %>
 
 <% content_for :next_button do  %>
@@ -48,7 +49,7 @@
         <%= link_to 'Edit', edit_comic_path(comic), :class => 'edit' %>
       </div>
       <div class="comic_control">
-        <%= link_to 'Destroy', comic_url(comic), :method => :delete, :class => 'destroy' %> 
+        <%= link_to 'Destroy', comic_url(comic)+"/destroy", :class => 'destroy' %>
       </div>
     <% end %>
   </div>

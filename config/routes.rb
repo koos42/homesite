@@ -13,5 +13,7 @@ Webcomic::Application.routes.draw do
   match 'feed' => 'comics#feed',
         :as => 'feed',
         :defaults => { :format => 'atom' }
+  match 'comics/:id/destroy' => 'comics#destroy'
+  
   resources :comics
 end
