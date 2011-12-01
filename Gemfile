@@ -4,5 +4,13 @@ gem 'rails', '3.0.7'
 gem 'jquery-rails', '>= 1.0.12'
 gem 'rake', '0.8.7'
 gem 'devise'
-gem 'sqlite3'
 gem 'aws-s3'
+
+group :development do
+  gem 'sqlite3'
+end
+
+group :production do
+  gem 'pg'
+end
+
