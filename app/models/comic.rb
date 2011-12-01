@@ -3,6 +3,7 @@ class Comic < ActiveRecord::Base
   validates :date,  :presence => true
   validates :blurb, :presence => true
 
+
   has_attached_file :photo, 
                       { 
                         :styles => { 
