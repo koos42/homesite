@@ -50,6 +50,8 @@ Webcomic::Application.configure do
   
   # Does mailing stuff for devise.
   config.action_mailer.default_url_options = { :host => 'anotherwebcomic.heroku.com' }
+
+  GOOGLE_ANALYTICS_ACCOUNT = ENV['GA_ACCOUNT'] || 'UA-1675572-1'
   
   PAPERCLIP_STORAGE_CONFIG = { :storage => :s3, 
                                :bucket => 'anotherwebcomic',
