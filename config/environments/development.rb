@@ -27,5 +27,6 @@ Webcomic::Application.configure do
   config.action_mailer.default_url_options = { :host => 'localhost:3000' }
 
   PAPERCLIP_STORAGE_CONFIG = { :storage => :filesystem }
+  GOOGLE_ANALYTICS_ACCOUNT = ENV['GA_ACCOUNT'] || 'development'
 end
 
