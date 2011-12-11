@@ -5,20 +5,7 @@ class ComicsController < ApplicationController
   # GET /comics
   # GET /comics.xml
   def index
-    @comics = Comic.order('date asc')
-
-    # hide unpublished or future comics from everyone but authors.
-    unless current_user && current_user.is_author
-      @comics.collect! { |comic|
-        if comic.publish && comic.date <= Time.now.to_date
-          comic
-        else
-          nil
-        end
-      }
-    end
-    @comics.compact!
-
+    @comics = get_comics
     respond_to do |format|
       format.html # index.html.erb
       format.xml  { render :xml => @comics }
@@ -117,8 +104,7 @@ class ComicsController < ApplicationController
   end
 
   def feed
-    @comics = Comic.order('date asc')
-    
+    @comics = get_comics
     respond_to do |format|
       format.atom { render :layout => false }
       format.rss { redirect_to feed_path(:format => :atom), :status => :moved_permanently }
@@ -142,4 +128,15 @@ class ComicsController < ApplicationController
       format.xml  { render :xml => @comic }
     end
   end
+  
+  def get_comics
+    if current_user && current_user.is_author
+      comics = Comic.order('date asc')
+    else
+      # hide unpublished or future comics from everyone but authors.
+      comics = Comic.where(:publish => true).where("date <= ?",DateTime.now).order('date asc')
+    end
+    comics
+  end
+
 end
