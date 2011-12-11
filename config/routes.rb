@@ -16,4 +16,8 @@ Webcomic::Application.routes.draw do
   match 'comics/:id/destroy' => 'comics#destroy'
   
   resources :comics
+
+  get "errors/four_oh_four"
+  get "errors/five_hundred"
+  match '*a', :to => 'errors#four_oh_four'
 end
