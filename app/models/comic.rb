@@ -34,4 +34,8 @@ class Comic < ActiveRecord::Base
       @prev
     end
   end
+
+  def has_original?
+    @has_original && @original_photo && @original_date 
+  end
 end

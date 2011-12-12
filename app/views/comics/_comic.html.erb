@@ -17,7 +17,7 @@
 
 <%= javascript_include_tag "comic" %>
 <div id="comic" <%= "class='hidden'" if hidden %> >
-  <% if comic.has_original && comic.original_photo && comic.original_date %>
+  <% if comic.has_original? %>
     <div id="original">
       <%= link_to "See the original from #{comic.original_date} here!", 
                   comic.original_photo.url(:display),
