@@ -1,12 +1,11 @@
 class ApplicationController < ActionController::Base
   protect_from_forgery
 
-  unless config.consider_all_requests_local
+  unless Rails.application.config.consider_all_requests_local
     rescue_from Exception, :with => :render_error
     rescue_from ActiveRecord::RecordNotFound, :with => :render_not_found
     rescue_from ActionController::RoutingError, :with => :render_not_found
     rescue_from ActionController::UnknownController, :with => :render_not_found
-    # customize these as much as you want, ie, different for every error or all the same
     rescue_from ActionController::UnknownAction, :with => :render_not_found
   end
 
@@ -22,12 +21,12 @@ class ApplicationController < ActionController::Base
   end
 
   def render_not_found(exception)
-    render :template => "/errors/404.html.erb", :status => 404
+    render :template => "/errors/four_oh_four.html.erb", :status => 404
   end
 
   def render_error(exception)
     #TODO: insert logging stuff....
-    render :template => "/errors/500.html.erb", :status => 500
+    render :template => "/errors/five_hundred.html.erb", :status => 500
   end
 
 end
