@@ -54,7 +54,7 @@ Webcomic::Application.configure do
   GOOGLE_ANALYTICS_ACCOUNT = ENV['GA_ACCOUNT'] || 'UA-1675572-1'
   
   PAPERCLIP_STORAGE_CONFIG = { :storage => :s3, 
-                               :bucket => 'anotherwebcomic',
+                               :bucket => ENV['S3_BUCKET'],
                                :path => "anotherwebcomic/:attachment/:style/:id.:extension",
                                :s3_credentials => {
                                   :access_key_id => ENV['S3_KEY'],
