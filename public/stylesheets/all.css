@@ -165,8 +165,8 @@ body {
 #comic #comic_controls, #author_actions {
   background: #000;
   clear: both;
-  width: 800px;
   padding: 5px;
+  width: 790px;
   text-align: center;
 }
 .comic_control, .author_action {
