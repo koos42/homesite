@@ -3,19 +3,8 @@
    javascript_include_tag :all
 %>
 
-<% content_for :next_button do  %>
-  <% if comic.next %>
-    <div id="next"><%= link_to 'Next Comic', url_for(comic.next), :id => comic.id %></div>
-  <% end %>
-<% end %>
-
-<% content_for :prev_button do  %>
-  <% if comic.prev %>
-    <div id="prev"><%= link_to 'Previous Comic', url_for(comic.prev), :id => comic.id %></div>
-  <% end %>
-<% end %>
-
 <%= javascript_include_tag "comic" %>
+
 <div id="comic" <%= "class='hidden'" if hidden %> >
   <% if comic.has_original? %>
     <div id="original">
@@ -25,58 +14,73 @@
     </div>
   <% end %>
   <div class="clear"> </div>
+
+  <div id="comic_info">
+    <h1 id="title"><%= comic.title %></h1>
+    <div id="date"><%= comic.date %></div>
+  </div>
+
   <div id="photo">
     <%= image_tag comic.photo.url(:display) %>
   </div>
   <div class="clear"> </div>
 
-  <div id="comic_controls_header">Browse Comics</div>
   <div id="comic_controls">
-    <div class="comic_control"><%= link_to "Archives", :controller => '/comics', :action => 'index' %></div>
-    <div class="comic_control spacer">&nbsp;</div>
-    <div class="comic_control"><%= link_to 'First Comic', url_for(@first_comic) %></div>
-    <div class="comic_control"><%= link_to 'Latest Comic', url_for(@latest_comic) %></div>
-    <div class="comic_control spacer">&nbsp;</div>
-    <% if comic.next %>
-      <div class="comic_control"><%= link_to 'Next', url_for(comic.next) %></div>
-    <% end %>
-    <% if comic.prev %>
-      <div class="comic_control"><%= link_to 'Previous', url_for(comic.prev) %></div>
-    <% end %>
-    <% if user_is_author? %>
-      <div class="comic_control spacer">&nbsp;</div>
-      <div class="comic_control">
-        <%= link_to 'Edit', edit_comic_path(comic), :class => 'edit' %>
+    <div class="comic_control prev">
+      <% if comic.prev %>
+        <%= link_to 'Previous', url_for(comic.prev) %>
+      <% else %>
+        <%= link_to 'Previous', '#', :class => 'disabled' %>
+      <% end %>
+    </div>
+    <div class="comic_control next">
+      <% if comic.next %>
+        <%= link_to 'Next', url_for(comic.next) %>
+      <% else %>
+        <%= link_to 'Next', '#', :class => 'disabled' %>
+      <% end %>
+    </div>
+
+    <div id="social_links" class="comic_control">
+
+      <div class="social_link" id="tweet">
+        <a href="http://twitter.com/share" class="twitter-share-button" data-url="http://anotherwebcomic.com<%= url_for(comic) %>" data-count="none" data-via="anotherwebcomic">Tweet</a><script type="text/javascript" src="http://platform.twitter.com/widgets.js"></script>
       </div>
-      <div class="comic_control">
-        <%= link_to 'Destroy', comic_url(comic)+"/destroy", :class => 'destroy', :confirm => "sure?" %>
+
+      <div class="social_link" id="fb_like">
+        <iframe src="http://www.facebook.com/plugins/like.php?app_id=234735943235066&amp;href=<%= CGI::escape("http://anotherwebcomic.com" + url_for(comic)) %>&amp;send=false&amp;layout=button_count&amp;width=50&amp;show_faces=true&amp;action=like&amp;colorscheme=light&amp;font&amp;height=21" scrolling="no" frameborder="0" style="border:none; overflow:hidden; width:50px; height:21px;" allowTransparency="true"></iframe>
       </div>
-    <% end %>
+
+      <div class="social_link" id="plus1">
+        <!-- Place this tag where you want the +1 button to render -->
+        <g:plusone size="medium" callback="http://anotherwebcomic.com<%= url_for(comic) %>"></g:plusone>
+
+        <!--  Place this tag after the last plusone tag -->
+        <script type="text/javascript">
+          (function() {
+            var po = document.createElement('script'); po.type = 'text/javascript'; po.async = true;
+            po.src = 'https://apis.google.com/js/plusone.js';
+            var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(po, s);
+          })();
+        </script>
+      </div>
+
+    </div>
   </div>
 
-  <div class="comic_info"><h1 id="title"><%= comic.title %></h1></div>
-  <div id="social_links" class="comic_info">
-    <div class="social_link" id="tweet">
-      <a href="http://twitter.com/share" class="twitter-share-button" data-url="http://anotherwebcomic.com<%= url_for(comic) %>" data-count="none" data-via="koos42">Tweet</a><script type="text/javascript" src="http://platform.twitter.com/widgets.js"></script>
-    </div>
-    <div class="social_link" id="fb_like">
-      <iframe src="http://www.facebook.com/plugins/like.php?app_id=234735943235066&amp;href=<%= CGI::escape("http://anotherwebcomic.com" + url_for(comic)) %>&amp;send=false&amp;layout=button_count&amp;width=50&amp;show_faces=true&amp;action=like&amp;colorscheme=light&amp;font&amp;height=21" scrolling="no" frameborder="0" style="border:none; overflow:hidden; width:50px; height:21px;" allowTransparency="true"></iframe>
-    </div>
-    <div class="social_link" id="plus1">
-      <!-- Place this tag where you want the +1 button to render -->
-      <g:plusone size="medium" callback="http://anotherwebcomic.com<%= url_for(comic) %>"></g:plusone>
-
-      <!--  Place this tag after the last plusone tag -->
-      <script type="text/javascript">
-        (function() {
-          var po = document.createElement('script'); po.type = 'text/javascript'; po.async = true;
-          po.src = 'https://apis.google.com/js/plusone.js';
-          var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(po, s);
-        })();
-      </script>
-    </div>
-    <div class="clear_left"></div>
-  </div>
-  <div id="date" class="comic_info"><%= comic.date %></div>
-  <div id="blurb" class="comic_info"><%= raw(comic.blurb) %></div>
+  <div id="blurb" class="float-left"><%= raw(comic.blurb) %></div>
+  <%= render :partial => 'static/right_ad_rail' %>
 </div>
+<% if user_is_author? %>
+  <div id="author_actions">
+    <div class="author_action edit">
+      <%= link_to 'Edit', edit_comic_path(comic), :class => 'edit' %>
+    </div>
+    <div class="author_action destroy">
+      <%= link_to 'Destroy', comic_url(comic)+"/destroy", :class => 'destroy', :confirm => "sure?" %>
+    </div>
+    <div class="author_action spacer">
+      &nbsp;
+    </div>
+  </div>
+<% end %>

@@ -23,10 +23,15 @@ body {
   line-height: 1px;
   clear: right;
 }
-
 .hidden {
   visibility: hidden;
   display: none;
+}
+.float_left {
+  float:left
+}
+.float_right {
+  float:right
 }
 
 #logo {
@@ -37,7 +42,7 @@ body {
 }
 
 #top_nav {
-  margin-top: 20px;
+  margin-top: 50px;
   padding: 20px 0 53px 170px;
   background: #000000;
   color: #FFFFFF;
@@ -62,17 +67,9 @@ body {
   float: left;
 }
 
-div#facebook_like {
-  margin-top: -16px;
-  margin-bottom: -18px;
-  margin-right: 5px;
-  float: right;
-}
-
 #top_nav .clear {
   float: none;
 }
-
 
 #content {
   width: 800px;
@@ -139,59 +136,75 @@ div#facebook_like {
   font-size: 11pt;
 }
 
+#comic_info {
+  width: 800px;
+  text-align: right;
+  margin-bottom: 15px;
+}
+#comic_info #title {
+  width: 680px;
+  text-align: left;
+  margin-bottom: -20px;
+}
+#comic_info #date {
+  position: relative;
+  bottom: 0;
+  right: 0;
+}
+
 #comic #photo {
   width: 800px;
   text-align: center;
   margin-bottom: 10px;
 }
+
 #comic #photo img {
   max-width: 800px;
 }
-#comic_controls_header {
-  float: right;
-  width: 230px;
-  color: #000;
-  text-align: center;
-  font-size: 22pt;
-  font-weight: bold;
-}
-#comic #comic_controls {
-  margin-top: -9px;
+
+#comic #comic_controls, #author_actions {
   background: #000;
-  float: right;
-  clear: right;
-  width: 220px;
+  clear: both;
+  width: 800px;
   padding: 5px;
+  text-align: center;
 }
-.comic_control a {
+.comic_control, .author_action {
+  width: 200px;
+}
+.comic_control a, .author_action a {
   padding: 5px;
   color: #FFF;
   font-weight: bold;
   font-size: 13pt;
 }
-
-.comic_control.spacer{
-  line-height: 5px;
+.comic_control.next, .author_action.edit {
+  float: right;
+  text-align: right;
 }
-
-#comic .comic_info {
-  width: 520px;
-  margin: 2px 0;
-}
-
-#comic .social_link {
+.comic_control.prev, .author_action.destroy{
   float: left;
+  text-align: left;
+}
+.comic_control a.disabled {
+  color: #444;
+}
+.comic_control#social_links, .author_action.spacer{
+  text-align: center;
+  width: 300px;
+  margin: auto;
+}
+.social_link {
+  display: inline;
   padding: 0 4px 0 0;
 }
-#comic #date {
-  color: #666;
-}
 #comic #blurb {
+  width: 570px;
+  float: left;
   color: #000000;
   position: relative;
   z-index: 0;
 }
-
 #comic #blurb p {
   margin: 12px 0;
 }
@@ -200,8 +213,15 @@ div#facebook_like {
   text-decoration: underline;
 }
 
+#right_ad_rail {
+  float: right;
+  padding: 10px 0;
+  width: 200px;
+  text-align: center;
+}
 
 #footer {
+  text-align: center;
   margin: auto;
   padding-top: 50px;
   color: #888;
@@ -213,7 +233,6 @@ div#facebook_like {
 }
 
 #user_nav {
-  text-align: center;
   margin: auto;
 }
 
