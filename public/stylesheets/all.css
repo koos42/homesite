@@ -168,9 +168,11 @@ body {
   padding: 5px;
   width: 790px;
   text-align: center;
+  margin-bottom: 8px;
 }
 .comic_control, .author_action {
   width: 200px;
+  margin-top: 3px;
 }
 .comic_control a, .author_action a {
   padding: 5px;
@@ -191,12 +193,17 @@ body {
 }
 .comic_control#social_links, .author_action.spacer{
   text-align: center;
-  width: 300px;
+  width: 350px;
   margin: auto;
+  position: relative;
+  top: 2px;
 }
 .social_link {
   display: inline;
-  padding: 0 4px 0 0;
+}
+.social_link#reddit {
+  position: relative;
+  bottom: 1px;
 }
 #comic #blurb {
   width: 570px;
