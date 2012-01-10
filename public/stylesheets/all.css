@@ -213,7 +213,8 @@ body {
   z-index: 0;
 }
 #comic #blurb p {
-  margin: 12px 0;
+  margin: 12px 0 20px;
+  line-height: 24px
 }
 
 #comic #blurb a {
