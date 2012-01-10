@@ -14,7 +14,7 @@ class ComicsController < ApplicationController
 
   # GET /comics/latest
   def latest
-    @comic = Comic.where(:publish => true).where("date <= ?",DateTime.now).order('date desc').first
+    @comic = Comic.where(:publish => true).where("date <= ?",DateTime.now.to_date).order('date desc').first
     show_comic
   end
   
@@ -114,11 +114,14 @@ class ComicsController < ApplicationController
   private
   def show_comic
     #populate the first and last links
-    @latest_comic = Comic.where(:publish => true).where("date <= ?",DateTime.now).order('date desc').first
-    @first_comic = Comic.where(:publish => true).where("date <= ?",DateTime.now).order('date asc').first
+    #TODO get rid of these, they're no longer used...
+    @latest_comic = Comic.where(:publish => true).where("date <= ?",DateTime.now.to_date).order('date desc').first
+    @first_comic = Comic.where(:publish => true).where("date <= ?",DateTime.now.to_date).order('date asc').first
 
     # allow only authors to view unpublished comics. Everyone else goes to index.
-    if !@comic || !( @comic.publish && @comic.date <= Time.now.to_date || (current_user && current_user.is_author) )
+    if !@comic || !(( @comic.publish && @comic.date <= DateTime.now.to_date) || (current_user && current_user.is_author) )
+      puts DateTime.now.to_date
+      puts DateTime.now
       params.delete :id
       redirect_to(:action => :latest) and return
     end
@@ -134,7 +137,7 @@ class ComicsController < ApplicationController
       comics = Comic.order('date asc')
     else
       # hide unpublished or future comics from everyone but authors.
-      comics = Comic.where(:publish => true).where("date <= ?",DateTime.now).order('date asc')
+      comics = Comic.where(:publish => true).where("date <= ?",DateTime.now.to_date).order('date asc')
     end
     comics
   end
