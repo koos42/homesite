@@ -7,8 +7,8 @@ atom_feed :language => 'en-US' do |feed|
       entry.url comic_url(comic)
       entry.date comic.date
       entry.title comic.title
-      entry.content comic.blurb.html_safe, :type=>'html'
-      entry.icon comic.photo.url(:full)
+      entry.content( (image_tag comic.photo.url(:display) + comic.blurb.html_safe), :type=>'html')
+      entry.icon comic.photo.url(:thumb)
       entry.icon comic.original_photo.url(:full) if comic.has_original?
     end
   end
