@@ -206,7 +206,7 @@ body {
   bottom: 1px;
 }
 #comic #blurb {
-  width: 570px;
+  width: 600px;
   float: left;
   color: #000000;
   position: relative;
@@ -224,11 +224,25 @@ body {
 #right_ad_rail {
   float: right;
   padding: 10px 0;
-  width: 200px;
+  width: 160px;
   text-align: center;
-  color: #999;
+  color: #888;
 }
 
+
+#facebook_fan_page {
+  margin-bottom: 30px;
+  border: solid black 1px;
+  padding: 10px;
+}
+
+#appeal_to_like {
+  margin-bottom: 8px;
+}
+
+.fb-like {
+  margin-bottom: 7px;
+}
 
 #footer {
   text-align: center;
