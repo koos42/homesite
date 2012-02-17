@@ -229,11 +229,14 @@ body {
   color: #888;
 }
 
-
 #facebook_fan_page {
-  margin-bottom: 30px;
+  margin-bottom: 20px;
   border: solid black 1px;
   padding: 10px;
+}
+
+.ad {
+  margin-bottom: 20px;
 }
 
 #appeal_to_like {
@@ -243,6 +246,7 @@ body {
 .fb-like {
   margin-bottom: 7px;
 }
+
 
 #footer {
   text-align: center;
@@ -259,5 +263,3 @@ body {
 #user_nav {
   margin: auto;
 }
-
-
