@@ -1,6 +1,11 @@
-<% return unless comic
+<% 
+    return unless comic
    javascript_include_tag :all
 %>
+
+<% content_for :head do %>
+  <meta property="og:image" content="<%= comic.photo.url(:display) %>" />
+<% end %>
 
 <%= javascript_include_tag "comic" %>
 
