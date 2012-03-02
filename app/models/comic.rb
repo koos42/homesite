@@ -3,6 +3,8 @@ class Comic < ActiveRecord::Base
   validates :date,  :presence => true
   validates :blurb, :presence => true
 
+  attr_accessor :url
+
 
   has_attached_file :photo, 
                       { 
@@ -38,4 +40,11 @@ class Comic < ActiveRecord::Base
   def has_original?
     @has_original && @original_photo && @original_date 
   end
+
+  def url
+    return @url if @url
+    @url = "http://anotherwebcomic.com/comics/#{self.id}"
+    return @url
+  end
+
 end

@@ -45,8 +45,11 @@
 
   </div>  
 
-  <div id="blurb" class="float-left"><%= raw(comic.blurb) %></div>
   <%= render :partial => 'static/right_ad_rail' %>
+  <div id="blurb" class="float-left"><%= raw(comic.blurb) %></div>
+  <div id="comments" >
+    <%= render :partial => 'comments', :locals => { :comic => comic } %>
+  </div>
 </div>
 <% if user_is_author? %>
   <div id="author_actions">

@@ -216,6 +216,10 @@ body {
   margin: 12px 0 20px;
   line-height: 24px
 }
+#comic #comments {
+  width: 600px;
+  float: left;
+}
 
 #comic #blurb a {
   text-decoration: underline;
