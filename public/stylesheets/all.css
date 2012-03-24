@@ -72,7 +72,7 @@ body {
 }
 
 #content {
-  width: 800px;
+  width: 1000px;
   margin:auto;
   margin-top: 0;
   padding-top: 10px;
@@ -110,12 +110,6 @@ body {
   clear: both;
 }
 
-#about p {
-  width: 800px;
-  margin: auto;
-  padding: 0 10px 10px;
-}
-
 #comic {
   margin-top: 15px;
 }
@@ -137,7 +131,7 @@ body {
 }
 
 #comic_info {
-  width: 800px;
+  width: 1000px;
   text-align: right;
   margin-bottom: 15px;
 }
@@ -153,20 +147,19 @@ body {
 }
 
 #comic #photo {
-  width: 800px;
+  width: 1000px;
   text-align: center;
   margin-bottom: 10px;
 }
 
 #comic #photo img {
-  max-width: 800px;
+  max-width: 1000px;
 }
 
 #comic #comic_controls, #author_actions {
   background: #000;
   clear: both;
   padding: 5px;
-  width: 790px;
   text-align: center;
   margin-bottom: 8px;
 }
@@ -228,7 +221,7 @@ body {
 #right_ad_rail {
   float: right;
   padding: 10px 0;
-  width: 160px;
+  width: 360px;
   text-align: center;
   color: #888;
 }

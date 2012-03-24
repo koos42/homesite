@@ -6,15 +6,6 @@
 <%= javascript_include_tag "comic" %>
 
 <div id="comic">
-  <% if comic.has_original? %>
-    <div id="original">
-      <%= link_to "See the original from #{comic.original_date} here!", 
-                  comic.original_photo.url(:display),
-                  :class => 'original_link' %>
-    </div>
-  <% end %>
-  <div class="clear"> </div>
-
   <div id="comic_info">
     <h1 id="title"><%= comic.title %></h1>
     <div id="date"><%= comic.date %></div>
