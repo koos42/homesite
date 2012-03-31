@@ -14,12 +14,11 @@ class Comic < ActiveRecord::Base
                         :wide => "1000>x1",
                       } 
                     }.merge(PAPERCLIP_STORAGE_CONFIG || {})
-  has_attached_file :original_photo, 
+  has_attached_file :thumbnail, 
                       { 
                         :styles => { 
-                        :display => "800>x1",
+                        :display => "500x500",
                         :thumb=> "100x100#",
-                        :wide => "1000>x1",
                       } 
                     }.merge(PAPERCLIP_STORAGE_CONFIG || {})
 
@@ -37,10 +36,6 @@ class Comic < ActiveRecord::Base
     else
       @prev
     end
-  end
-
-  def has_original?
-    @has_original && @original_photo && @original_date 
   end
 
   def url

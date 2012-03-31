@@ -32,16 +32,8 @@
     <%= f.file_field :photo %>
   </div>
   <div class="field">
-    <%= f.label :has_original %><br />
-    <%= f.check_box :has_original %>
-  </div>
-  <div class="field">
-    <%= f.label :original_date %><br />
-    <%= f.date_select :original_date %>
-  </div>
-  <div class="field">
-    <%= f.label :original_photo %><br />
-    <%= f.file_field :original_photo %>
+    <%= f.label :thumbnail%><br />
+    <%= f.file_field :thumbnail%>
   </div>
   <div class="actions">
     <%= f.submit %>

@@ -10,7 +10,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20110410181652) do
+ActiveRecord::Schema.define(:version => 20120331205443) do
 
   create_table "comics", :force => true do |t|
     t.string   "title"
@@ -22,11 +22,9 @@ ActiveRecord::Schema.define(:version => 20110410181652) do
     t.string   "photo_file_name"
     t.string   "photo_content_type"
     t.integer  "photo_file_size"
-    t.date     "original_date"
-    t.string   "original_photo_file_name"
-    t.string   "original_photo_content_type"
-    t.integer  "original_photo_file_size"
-    t.boolean  "has_original"
+    t.string   "thumbnail_file_name"
+    t.string   "thumbnail_content_type"
+    t.integer  "thumbnail_file_size"
   end
 
   create_table "users", :force => true do |t|
