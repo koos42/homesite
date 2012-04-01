@@ -1,5 +1,9 @@
 <% return unless comic %>
 <div class="minimal_comic" id="<%= comic.id %>">
   <%= link_to comic.title, comic, :class => "text_link"%>
-  <%= link_to image_tag(comic.photo.url(:thumb), :class => 'thumb'), comic, :class => "img_link" %>
+  <%  if comic.thumbnail && !(comic.thumbnail.url =~ /missing\.(png|gif|jpg|jpeg)$/) %>
+    <%= link_to image_tag(comic.thumbnail.url(:thumb), :class => 'thumb'), comic, :class => "img_link" %>
+  <% else %>
+    <%= link_to image_tag(comic.photo.url(:thumb), :class => 'thumb'), comic, :class => "img_link" %>
+  <% end %>
 </div>

@@ -28,10 +28,12 @@
     <%= f.text_area :blurb %>
   </div>
   <div class="field">
+    <%= image_tag @comic.photo.url(:prev) if @comic.photo %>
     <%= f.label :photo %><br />
     <%= f.file_field :photo %>
   </div>
   <div class="field">
+    <%= image_tag @comic.thumbnail.url(:prev) if @comic.thumbnail %>
     <%= f.label :thumbnail%><br />
     <%= f.file_field :thumbnail%>
   </div>
