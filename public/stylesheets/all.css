@@ -36,7 +36,7 @@ body {
 
 #logo {
   position: absolute;
-  top: 0px;
+  top: 1px;
   left: 10px;
   z-index: 20;
 }
@@ -114,38 +114,6 @@ body {
   margin-top: 15px;
 }
 
-#comic #original {
-  float: right;
-  width: 150px;
-  height: 60px;
-  text-align: center;
-}
-
-#comic #original a {
-  display: block;
-  padding: 4px;
-  width: 142px;
-  height: 60px;
-  background: url(/images/original.png) left top no-repeat;
-  font-size: 11pt;
-}
-
-#comic_info {
-  width: 1000px;
-  text-align: right;
-  margin-bottom: 15px;
-}
-#comic_info #title {
-  width: 680px;
-  text-align: left;
-  margin-bottom: -20px;
-}
-#comic_info #date {
-  position: relative;
-  bottom: 0;
-  right: 0;
-}
-
 #comic #photo {
   width: 1000px;
   text-align: center;
@@ -163,6 +131,7 @@ body {
   text-align: center;
   margin-bottom: 8px;
 }
+
 .comic_control, .author_action {
   width: 200px;
   margin-top: 3px;
@@ -198,6 +167,28 @@ body {
   position: relative;
   bottom: 1px;
 }
+
+.title-block {
+  width: 600px;
+  float: left;
+  clear: left;
+  color: #000000;
+}
+.title-block .thumbnail {
+  float: left;
+  width: 100px;
+  height: 100px;
+}
+.title-block .title {
+  width: 490px;
+  float: right;
+}
+.title-block .date {
+  float: left;
+  clear: right;
+  margin-left: 12px;
+}
+
 #comic #blurb {
   width: 600px;
   float: left;

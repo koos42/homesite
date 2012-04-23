@@ -46,4 +46,7 @@ class Comic < ActiveRecord::Base
     return @url
   end
 
+  def thumbnail_url
+    !(self.thumbnail.url =~ /missing\.(png|gif|jpg|jpeg)/ ) ? self.thumbnail.url(:thumb) : self.photo.url(:thumb)
+  end
 end
