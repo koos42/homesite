@@ -36,7 +36,7 @@ body {
 
 #logo {
   position: absolute;
-  top: 1px;
+  top: 0px;
   left: 10px;
   z-index: 20;
 }
@@ -84,6 +84,7 @@ body {
   float: left;
   position: relative;
   margin: 5px;
+  border: 1px #000 solid;
 }
 .minimal_comic a.text_link{
   width: 100px;
@@ -103,7 +104,7 @@ body {
   color: #FFF;
   background: #000;
   color: rgba(255,255,255,1);
-  background: rgba(0,0,0,0.9);
+  background: rgba(0,0,0,0.8);
 }
 
 .new_comic {
