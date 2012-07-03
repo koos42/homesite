@@ -13,7 +13,8 @@ class Comic < ActiveRecord::Base
                           :prev => "200>x1",
                           :display => "800>x1",
                           :wide => "1000>x1",
-                        } 
+                        },
+                        :url => "/system/:attachment/:id/:style/:filename",
                       }.merge(PAPERCLIP_STORAGE_CONFIG || {})
   has_attached_file :thumbnail, 
                       { 
@@ -21,7 +22,8 @@ class Comic < ActiveRecord::Base
                           :display => "500x500",
                           :thumb=> "100x100#",
                           :prev => "200>x1",
-                        } 
+                        },
+                        :url => "/system/:attachment/:id/:style/:filename",
                       }.merge(PAPERCLIP_STORAGE_CONFIG || {})
 
   def next
