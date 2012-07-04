@@ -8,7 +8,7 @@
   <%
     og_tag_map = {
       "og:type" => 'article',
-      "og:image" => "http://anotherwebcomic.com#{URI.encode(comic.photo.url(:wide))}",
+      "og:image" => "http://awc-staging.heroku.com#{URI.encode(comic.photo.url(:wide))}",
       "og:title" => comic.title,
       "og:author" => 'http://facebook.com/koos42',
       "og:url" => URI.encode(comic.url),
