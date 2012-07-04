@@ -6,6 +6,7 @@ gem 'rake', '0.8.7'
 gem 'devise'
 gem 'aws-s3'
 gem 'paperclip', '>= 3.0'
+gem 'aws-sdk'
 
 group :development do
   gem 'sqlite3'
