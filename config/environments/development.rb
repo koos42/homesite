@@ -28,5 +28,6 @@ Webcomic::Application.configure do
 
   PAPERCLIP_STORAGE_CONFIG = { :storage => :filesystem }
   GOOGLE_ANALYTICS_ACCOUNT = ENV['GA_ACCOUNT'] || 'development'
+  FACEBOOK_APP_ID = ENV['FB_APP_ID'] || '206051896150651'
 end
 

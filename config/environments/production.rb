@@ -59,4 +59,5 @@ Webcomic::Application.configure do
                                :s3_credentials => {
                                   :access_key_id => ENV['S3_KEY'],
                                   :secret_access_key => ENV['S3_SECRET'] }} 
+  FACEBOOK_APP_ID = ENV['FB_APP_ID'] || '273241006081887'
 end
