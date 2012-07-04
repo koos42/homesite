@@ -8,10 +8,10 @@
   <%
     og_tag_map = {
       "og:type" => 'article',
-      "og:image" => "http://#{request.host}#{URI.encode(comic.photo.url(:wide))}",
+      "og:image" => URI.encode(comic.photo.url(:wide)),
       "og:title" => comic.title,
-      "og:author" => 'http://facebook.com/koos42',
       "og:url" => URI.encode(comic_url(comic)),
+      "article:author" => 'http://facebook.com/koos42',
       "article:published_time" => comic.date,
       "article:tag" => 'comics',
     }
