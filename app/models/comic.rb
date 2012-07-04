@@ -44,7 +44,7 @@ class Comic < ActiveRecord::Base
 
   def url
     return @url if @url
-    @url = "http://anotherwebcomic.com/comics/#{self.id}"
+    @url = "http://#{request.host}/comics/#{self.id}"
     return @url
   end
 
