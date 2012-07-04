@@ -7,12 +7,15 @@ gem 'devise'
 gem 'aws-s3'
 gem 'paperclip', '>= 3.0'
 gem 'aws-sdk'
+gem 'pg'
+gem 'thin'
+gem 'newrelic_rpm'
 
 group :development do
   gem 'sqlite3'
 end
 
 group :production do
-#  gem 'pg'
+  # stuff
 end
 
