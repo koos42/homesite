@@ -2,20 +2,20 @@
 <div id="social_links" class="comic_control">
 
   <div class="social_link" id="tweet">
-    <a href="http://twitter.com/share" class="twitter-share-button" data-url="<%= comic.url %>" data-count="none" data-via="anotherwebcomic">Tweet</a><script type="text/javascript" src="http://platform.twitter.com/widgets.js"></script>
+    <a href="http://twitter.com/share" class="twitter-share-button" data-url="<%= comic_url(comic) %>" data-count="none" data-via="anotherwebcomic">Tweet</a><script type="text/javascript" src="http://platform.twitter.com/widgets.js"></script>
   </div>
 
   <div class="social_link" id="reddit">
-    <a href="http://www.reddit.com/submit?url=<%= URI.encode(comic.url)%>" target="_blank" > <img src="http://www.reddit.com/static/spreddit7.gif" alt="submit to reddit" border="0" /> </a>
+    <a href="http://www.reddit.com/submit?url=<%= URI.encode(comic_url(comic))%>" target="_blank" > <img src="http://www.reddit.com/static/spreddit7.gif" alt="submit to reddit" border="0" /> </a>
   </div>
 
   <div class="social_link" id="fb_like">
-    <iframe src="http://www.facebook.com/plugins/like.php?app_id=234735943235066&amp;href=<%= CGI::escape(comic.url) %>&amp;send=false&amp;layout=button_count&amp;width=50&amp;show_faces=true&amp;action=like&amp;colorscheme=light&amp;font&amp;height=21" scrolling="no" frameborder="0" style="border:none; overflow:hidden; width:50px; height:21px;" allowTransparency="true"></iframe>
+    <iframe src="http://www.facebook.com/plugins/like.php?app_id=234735943235066&amp;href=<%= CGI::escape(comic_url(comic)) %>&amp;send=false&amp;layout=button_count&amp;width=50&amp;show_faces=true&amp;action=like&amp;colorscheme=light&amp;font&amp;height=21" scrolling="no" frameborder="0" style="border:none; overflow:hidden; width:50px; height:21px;" allowTransparency="true"></iframe>
   </div>
 
   <div class="social_link" id="plus1">
     <!-- Place this tag where you want the +1 button to render -->
-    <g:plusone size="medium" callback="<%= comic.url %>"></g:plusone>
+    <g:plusone size="medium" callback="<%= comic_url(comic) %>"></g:plusone>
 
     <!--  Place this tag after the last plusone tag -->
     <script type="text/javascript">
