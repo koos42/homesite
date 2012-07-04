@@ -3,6 +3,23 @@
    javascript_include_tag :all
 %>
 
+<% content_for :og_meta_tags do %>
+  <head prefix="og: http://ogp.me/ns# fb: http://ogp.me/ns/fb# article: http://ogp.me/ns/article#">
+  <%
+    og_tag_map = {
+      "og:type" => 'article',
+      "og:image" => "http://anotherwebcomic.com#{URI.encode(comic.photo.url(:wide))}",
+      "og:title" => comic.title,
+      "og:author" => 'http://facebook.com/koos42',
+      "og:url" => URI.encode(comic.url),
+      "article:published_time" => comic.date,
+      "article:tag" => 'comics',
+    }
+    og_tag_map.each do |og_tag, value| %>
+      <%= tag :meta, :property => og_tag, :content => value %>
+    <% end %>
+<% end %>
+
 <%= javascript_include_tag "comic" %>
 
 <div id="comic">

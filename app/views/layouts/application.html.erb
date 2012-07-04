@@ -7,8 +7,9 @@
   <%= csrf_meta_tag %>
   <%= auto_discovery_link_tag :atom, "/comics/feed" %>
   <%= auto_discovery_link_tag :rss, "/comics/feed.rss" %>
-  <meta property="fb:page_id" content="160641594010312" />
+  <% # <meta property="fb:page_id" content="160641594010312" /> %>
   <meta property="fb:app_id" content="273241006081887"/>
+  <%= yield :og_meta_tags %>
   <%= yield :head %>
   <% unless user_signed_in? %>
   <%# don't do analytics for users who are signed in, they don't count. %>
