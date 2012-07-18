@@ -1,3 +1,7 @@
+<% content_for :title_extra do %>
+ | Archive
+<% end %>
+
 <% @comics.each do |comic| %>
   <%= render :partial => 'minimal_comic', :locals => {:comic => comic} %>
 <% end %>

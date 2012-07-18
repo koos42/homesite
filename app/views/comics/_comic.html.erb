@@ -3,6 +3,10 @@
   javascript_include_tag :all
 %>
 
+<% content_for :title_extra do %>
+ | <%= comic.title %>
+<% end %>
+
 <% content_for :og_meta_tags do %>
   <head prefix="og: http://ogp.me/ns# fb: http://ogp.me/ns/fb# article: http://ogp.me/ns/article#">
   <%
