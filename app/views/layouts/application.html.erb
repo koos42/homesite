@@ -8,6 +8,7 @@
   <%= auto_discovery_link_tag :atom, "/comics/feed" %>
   <%= auto_discovery_link_tag :rss, "/comics/feed.rss" %>
   <% # <meta property="fb:page_id" content="160641594010312" /> %>
+  <meta name="description" content="<%= yield :meta_desc %>" />
   <meta property="fb:app_id" content="<%= FACEBOOK_APP_ID %>"/>
   <%= yield :og_meta_tags %>
   <%= yield :head %>

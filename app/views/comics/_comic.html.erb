@@ -3,6 +3,10 @@
   javascript_include_tag :all
 %>
 
+<% content_for :meta_desc do %>
+  <%= strip_tags(comic.blurb)[0..154] %>
+<% end %>
+
 <% content_for :title_extra do %>
  | <%= comic.title %>
 <% end %>

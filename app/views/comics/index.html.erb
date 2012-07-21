@@ -2,6 +2,11 @@
  | Archive
 <% end %>
 
+<% content_for :meta_desc do %>
+  AnotherWebcomic.com is a biweekly webcomic with <%= @comics.count %> comics and counting!
+  The topics change and the comics stay funny.
+<% end %>
+
 <% @comics.each do |comic| %>
   <%= render :partial => 'minimal_comic', :locals => {:comic => comic} %>
 <% end %>
