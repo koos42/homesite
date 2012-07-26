@@ -10,7 +10,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120331205443) do
+ActiveRecord::Schema.define(:version => 20120726001342) do
 
   create_table "comics", :force => true do |t|
     t.string   "title"
@@ -27,10 +27,19 @@ ActiveRecord::Schema.define(:version => 20120331205443) do
     t.integer  "thumbnail_file_size"
   end
 
+  create_table "goodies", :force => true do |t|
+    t.string   "name"
+    t.string   "desc"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.string   "goody_file_file_name"
+    t.integer  "goody_file_file_size"
+    t.string   "goody_file_content_type"
+  end
+
   create_table "users", :force => true do |t|
     t.string   "email",                               :default => "", :null => false
     t.string   "encrypted_password",   :limit => 128, :default => "", :null => false
-    t.string   "password_salt",                       :default => "", :null => false
     t.string   "reset_password_token"
     t.string   "remember_token"
     t.datetime "remember_created_at"
