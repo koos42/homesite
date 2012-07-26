@@ -1,4 +1,6 @@
 Webcomic::Application.routes.draw do
+  resources :goodies
+
   root :to => "comics#latest"
 
   get "pages/about"
