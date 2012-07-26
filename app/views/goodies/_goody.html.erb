@@ -1,0 +1,17 @@
+<% return unless goody %>
+<div class="goody" id="<%= goody.id %>">
+  <%= link_to( image_tag(goody.goody_file.url(:thumb), :alt=> goody.desc, :class => 'goody_thumb'), goody.goody_file.url, :class=>'goody_thumb_link') %>
+  <h3><%= link_to goody.name, goody.goody_file.url %></h3>
+  <div class="goody_desc">
+    <%= goody.desc %>
+  </div>
+  <% if user_is_author? %>
+    <div class="goody_edit">
+      <%= link_to "EDIT", edit_goody_path(goody) %>
+    </div>
+  <% else %>
+    <div class="goody_download">
+      <%= link_to "DOWNLOAD", goody.goody_file.url %>
+    </div>
+  <% end %>
+</div>

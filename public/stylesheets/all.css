@@ -60,25 +60,21 @@ body {
 #top_nav a.selected{
   color: #F00070;
 }
-
 #top_nav div {
   padding-left: 40px;
   margin-top: 6px;
   float: left;
 }
-
 #top_nav .clear {
   float: none;
 }
-
 #content {
   width: 1000px;
   margin:auto;
   margin-top: 0;
   padding-top: 10px;
 }
-
-.minimal_comic{
+.minimal_comic {
   width: 100px;
   height: 100px;
   float: left;
@@ -86,7 +82,7 @@ body {
   margin: 5px;
   border: 1px #000 solid;
 }
-.minimal_comic a.text_link{
+.minimal_comic a.text_link {
   width: 100px;
   height: 100px;
   display: block;
@@ -106,15 +102,12 @@ body {
   color: rgba(255,255,255,1);
   background: rgba(0,0,0,0.8);
 }
-
-.new_comic {
+.new_comic, .new_goody {
   clear: both;
 }
-
 #comic {
   margin-top: 15px;
 }
-
 #comic #photo {
   width: 1000px;
   text-align: center;
@@ -251,4 +244,24 @@ body {
 
 #user_nav {
   margin: auto;
+}
+.goody {
+  width: 100px;
+  float: left;
+  position: relative;
+  margin: 5px;
+  text-align: center;
+}
+.goody img.goody_thumb {
+  border: 1px black solid;
+}
+.goody a.goody_thumb_link {
+  background: none;
+}
+.goody h3 a {
+  color: black;
+}
+.goody h3 a:hover{
+  color: white;
+  background: black;
 }
