@@ -9,6 +9,7 @@ div.notice, div.alert {
 body {
   color: #000000;
   font-family: "Helvetica", Helvetica, Arial, sans-serif;
+  font-size: 14px;
 }
 
 .clear {
@@ -184,6 +185,7 @@ body {
 }
 
 #comic #blurb {
+  font-size: 16px;
   width: 600px;
   float: left;
   color: #000000;
@@ -229,6 +231,27 @@ body {
   margin-bottom: 7px;
 }
 
+.goody {
+  width: 100px;
+  float: left;
+  position: relative;
+  margin: 5px;
+  text-align: center;
+}
+.goody img.goody_thumb {
+  border: 1px black solid;
+}
+.goody a.goody_thumb_link,
+.goody a.goody_thumb_link:hover {
+  background: none;
+}
+.goody a,.goody h3 a {
+  color: black;
+}
+.goody a:hover, .goody h3 a:hover {
+  color: white;
+  background: black;
+}
 
 #footer {
   text-align: center;
@@ -244,24 +267,4 @@ body {
 
 #user_nav {
   margin: auto;
-}
-.goody {
-  width: 100px;
-  float: left;
-  position: relative;
-  margin: 5px;
-  text-align: center;
-}
-.goody img.goody_thumb {
-  border: 1px black solid;
-}
-.goody a.goody_thumb_link {
-  background: none;
-}
-.goody h3 a {
-  color: black;
-}
-.goody h3 a:hover{
-  color: white;
-  background: black;
 }
