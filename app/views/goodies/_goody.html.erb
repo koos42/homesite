@@ -7,7 +7,8 @@
   </div>
   <% if user_is_author? %>
     <div class="goody_edit">
-      <%= link_to "EDIT", edit_goody_path(goody) %>
+      <%= link_to "EDIT", edit_goody_path(goody) %> |
+      <%= link_to "X", destroy_goody_path(goody) %>
     </div>
   <% else %>
     <div class="goody_download">
