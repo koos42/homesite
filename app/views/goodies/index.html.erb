@@ -1,25 +1,15 @@
-<h1>Listing goodies</h1>
-
-<table>
-  <tr>
-    <th>Name</th>
-    <th>Desc</th>
-    <th></th>
-    <th></th>
-    <th></th>
-  </tr>
+<% content_for :title_extra do %>
+ | Goodies
+<% end %>
 
 <% @goodies.each do |goody| %>
-  <tr>
-    <td><%= goody.name %></td>
-    <td><%= goody.desc %></td>
-    <td><%= link_to 'Show', goody %></td>
-    <td><%= link_to 'Edit', edit_goody_path(goody) %></td>
-    <td><%= link_to 'Destroy', goody, :confirm => 'Are you sure?', :method => :delete %></td>
-  </tr>
+  <%= render :partial => 'goody', :locals => {:goody => goody} %>
 <% end %>
-</table>
 
-<br />
-
-<%= link_to 'New Goody', new_goody_path %>
+<% if user_is_author? %>
+  <div class="new_goody">
+    <%= link_to('+ New Goody', new_goody_path) %>
+  </div>
+<% else %>
+  <div class="clear" > </div>
+<% end %>
