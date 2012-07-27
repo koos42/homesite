@@ -1,5 +1,6 @@
 class ApplicationController < ActionController::Base
   protect_from_forgery
+  before_filter :any_goodies?
 
   unless Rails.application.config.consider_all_requests_local
     rescue_from Exception, :with => :render_error
@@ -27,6 +28,10 @@ class ApplicationController < ActionController::Base
   def render_error(exception)
     #TODO: insert logging stuff....
     render :template => "/errors/five_hundred.html.erb", :status => 500
+  end
+
+  def any_goodies?
+    @haz_goodies = Goody.any?
   end
 
 end
