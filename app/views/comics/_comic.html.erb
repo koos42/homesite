@@ -16,9 +16,10 @@
   <%
     og_tag_map = {
       "og:type" => 'article',
-      "og:image" => URI.encode(comic.photo.url(:wide)),
+      "og:image" => URI.encode(comic.thumbnail_url(:original)),
       "og:title" => comic.title,
       "og:url" => URI.encode(comic_url(comic)),
+      "og:description" => strip_tags(comic.blurb)[0..154],
       "article:author" => 'http://facebook.com/koos42',
       "article:published_time" => comic.date,
       "article:tag" => 'comics',
@@ -27,9 +28,7 @@
       <%= tag :meta, :property => og_tag, :content => value %>
     <% end %>
 <% end %>
-
-<%= javascript_include_tag "comic" %>
-
+<%= javascript_include_tag "comic" %> 
 <div id="comic">
   <div id="photo">
     <%= image_tag comic.photo.url(:wide) %>

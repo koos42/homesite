@@ -16,11 +16,13 @@ class Comic < ActiveRecord::Base
                         },
                         :url => "/system/:attachment/:id/:style/:filename",
                       }.merge(PAPERCLIP_STORAGE_CONFIG || {})
+
   has_attached_file :thumbnail, 
                       { 
                         :styles => { 
                           :display => "500x500",
                           :thumb=> "100x100#",
+                          :fb=> "200x200#",
                           :prev => "200>x1",
                         },
                         :url => "/system/:attachment/:id/:style/:filename",
@@ -48,7 +50,7 @@ class Comic < ActiveRecord::Base
     return @url
   end
 
-  def thumbnail_url
-    !(self.thumbnail.url =~ /missing\.(png|gif|jpg|jpeg)/ ) ? self.thumbnail.url(:thumb) : self.photo.url(:thumb)
+  def thumbnail_url(size = :thumb)
+    !(self.thumbnail.url =~ /missing\.(png|gif|jpg|jpeg)/ ) ? self.thumbnail.url(size) : self.photo.url(size)
   end
 end
