@@ -1,5 +1,5 @@
 <% return unless comic %>
 <div class="minimal_comic" id="<%= comic.id %>">
-  <%= link_to comic.title, comic, :class => "text_link"%>
-    <%= link_to image_tag(comic.thumbnail_url , :class => 'thumb'), comic, :class => "img_link" %>
+  <%= link_to comic.title, show_by_slug_path(comic.slug), :class => "text_link"%>
+    <%= link_to image_tag(comic.thumbnail_url , :class => 'thumb'), show_by_slug(comic.slug), :class => "img_link" %>
 </div>

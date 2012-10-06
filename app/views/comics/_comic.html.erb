@@ -11,8 +11,11 @@
  | <%= comic.title %>
 <% end %>
 
+<% content_for :head_prefix do %>
+  prefix="og: http://ogp.me/ns# fb: http://ogp.me/ns/fb# article: http://ogp.me/ns/article#"
+<% end %>
+
 <% content_for :og_meta_tags do %>
-  <head prefix="og: http://ogp.me/ns# fb: http://ogp.me/ns/fb# article: http://ogp.me/ns/article#">
   <%
     og_tag_map = {
       "og:type" => 'article',
@@ -38,14 +41,14 @@
   <div id="comic_controls">
     <div class="comic_control prev">
       <% if comic.prev %>
-        <%= link_to 'Previous', url_for(comic.prev) %>
+        <%= link_to 'Previous', show_by_slug_path(comic.prev.slug) %>
       <% else %>
         <%= link_to 'Previous', '#', :class => 'disabled' %>
       <% end %>
     </div>
     <div class="comic_control next">
       <% if comic.next %>
-        <%= link_to 'Next', url_for(comic.next) %>
+        <%= link_to 'Next', show_by_slug_path(comic.next.slug) %>
       <% else %>
         <%= link_to 'Next', '#', :class => 'disabled' %>
       <% end %>

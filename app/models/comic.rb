@@ -1,10 +1,12 @@
 class Comic < ActiveRecord::Base
+  before_validation :sluggify
+
   validates :title, :presence => true
   validates :date,  :presence => true
   validates :blurb, :presence => true
+  validates :slug,  :presence => true
 
   attr_accessor :url
-
 
   has_attached_file :photo, 
                       { 
@@ -46,11 +48,17 @@ class Comic < ActiveRecord::Base
 
   def url
     return @url if @url
-    @url = "http://#{request.host}/comics/#{self.id}"
+    @url = "http://#{request.host}/#{self.slug}"
     return @url
   end
 
   def thumbnail_url(size = :thumb)
     !(self.thumbnail.url =~ /missing\.(png|gif|jpg|jpeg)/ ) ? self.thumbnail.url(size) : self.photo.url(size)
+  end
+
+  private
+  def sluggify
+    self.slug = self.slug ? self.slug :
+                self.title.downcase.gsub(/[^(\w\s)]/,'').gsub(/\s/, '_')
   end
 end

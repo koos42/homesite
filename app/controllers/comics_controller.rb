@@ -21,7 +21,14 @@ class ComicsController < ApplicationController
   # GET /comics/1
   # GET /comics/1.xml
   def show
+    #deprecating the id based urls in favor of slug based urls.
     @comic = Comic.find(params[:id])
+    redirect_to show_by_slug_path(@comic.slug), :status => :moved_permanently
+  end
+
+  # GET /slug_goes_here
+  def show_by_slug
+    @comic = Comic.find_by_slug(params[:slug])
     show_comic
   end
 

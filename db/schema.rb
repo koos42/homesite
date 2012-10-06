@@ -10,7 +10,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120726001342) do
+ActiveRecord::Schema.define(:version => 20121006211341) do
 
   create_table "comics", :force => true do |t|
     t.string   "title"
@@ -25,7 +25,10 @@ ActiveRecord::Schema.define(:version => 20120726001342) do
     t.string   "thumbnail_file_name"
     t.string   "thumbnail_content_type"
     t.integer  "thumbnail_file_size"
+    t.string   "slug"
   end
+
+  add_index "comics", ["slug"], :name => "index_comics_on_slug", :unique => true
 
   create_table "goodies", :force => true do |t|
     t.string   "name"
