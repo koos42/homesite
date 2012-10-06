@@ -37,43 +37,47 @@
     fjs.parentNode.insertBefore(js, fjs);
   }(document, 'script', 'facebook-jssdk'));</script>
 
-  <div class="notice"><%= notice %></div>
-  <div class="alert"><%= alert %></div>
-  <div id="logo">
-    <%= link_to image_tag('/images/logo.gif', :alt => "anotherwebcomic.com"), '/' %>
-  </div>
-  <div id="top_nav">
-    <div id="archive_link">
-      <%= link_to "Archive", comics_path %>
+  <div id="everything">
+    <div class="notice"><%= notice %></div>
+    <div class="alert"><%= alert %></div>
+    <div id="logo">
+      <h1>
+        <%= link_to 'Another Webcomic', '/' %>
+      </h1>
     </div>
-    <% if @haz_goodies || user_is_author? %>
-      <div id="goodies_link">
-        <%= link_to "Goodies", goodies_path %>
+    <div id="top_nav">
+      <div id="archive_link">
+        <%= link_to "Archive", comics_path %>
       </div>
-    <% end %>
-    <div id="facebook_link">
-      <%= link_to "Facebook", "http://facebook.com/anotherwebcomic" %>
-    </div>
-    <div id="twitter_link">
-      <%= link_to "Twitter", "http://twitter.com/anotherwebcomic" %>
-    </div>
-  </div>
-  <div id="content">
-
-<%= yield %>
-
-  <div class="clear"></div>
-  </div>
-  <div id="footer">
-    &copy; Copyright <%= DateTime.now().year %> Koos Kleven
-    <% if user_signed_in? %>
-      <div id="user_nav">
-        Signed in as <%= current_user.username %>.
-        <%= link_to "Sign out", destroy_user_session_path %>
+      <% if @haz_goodies || user_is_author? %>
+        <div id="goodies_link">
+          <%= link_to "Goodies", goodies_path %>
+        </div>
+      <% end %>
+      <div id="facebook_link">
+        <%= link_to "Facebook", "http://facebook.com/anotherwebcomic", :target => '_blank' %>
       </div>
-    <% else %>
-        <% # link_to "Sign up", new_user_registration_path %>
-    <% end %>
-  </div>
+      <div id="twitter_link">
+        <%= link_to "Twitter", "http://twitter.com/koos42", :target => 'blank' %>
+      </div>
+    </div>
+    <div id="content">
+
+  <%= yield %>
+
+    <div class="clear"></div>
+    </div>
+    <div id="footer">
+      &copy; Copyright <%= DateTime.now().year %> Koos Kleven
+      <% if user_signed_in? %>
+        <div id="user_nav">
+          Signed in as <%= current_user.username %>.
+          <%= link_to "Sign out", destroy_user_session_path %>
+        </div>
+      <% else %>
+          <% # link_to "Sign up", new_user_registration_path %>
+      <% end %>
+    </div>
+  </div> <%# ends #everything %>
 </body>
 </html>
