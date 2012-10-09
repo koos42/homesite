@@ -1,6 +1,6 @@
 class ComicsController < ApplicationController
-  before_filter :authenticate_user!, :except => [:latest, :show, :index, :latest, :feed, :prev, :next]
-  before_filter :require_author_status, :except => [:latest, :show, :index, :latest, :feed, :prev, :next]
+  before_filter :authenticate_user!, :except => [:latest, :show, :show_by_slug, :index, :latest, :feed, :prev, :next]
+  before_filter :require_author_status, :except => [:latest, :show, :show_by_slug, :index, :latest, :feed, :prev, :next]
 
   # GET /comics
   # GET /comics.xml
