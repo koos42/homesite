@@ -21,9 +21,8 @@ Webcomic::Application.routes.draw do
         :as => 'feed',
         :defaults => { :format => 'atom' }
   match 'comics/:id/destroy' => 'comics#destroy'
-  match '/comics' => 'comics#index'
-  match '/:slug' => 'comics#show_by_slug', :as => 'show_by_slug'
   resources :comics
+  get '/:slug' => 'comics#show_by_slug', :as => 'show_by_slug'
 
 # Catch all for custom 404/500s
   get "errors/four_oh_four"
