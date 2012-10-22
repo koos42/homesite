@@ -15,9 +15,9 @@ class ComicsController < ApplicationController
   # GET /comics/latest
   def latest
     @comic = Comic.where(:publish => true).where("date <= ?",DateTime.now.to_date).order('date desc').first
-    show_comic
+    redirect_to show_by_slug_path(@comic.slug), :status => 302
   end
-  
+
   # GET /comics/1
   # GET /comics/1.xml
   def show
