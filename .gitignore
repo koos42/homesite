@@ -5,3 +5,5 @@ tmp/
 .rvmrc
 public/system
 .env
+bin/*
+bundle/*
