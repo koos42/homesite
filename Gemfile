@@ -1,3 +1,5 @@
+ruby '1.9.3'
+
 source 'http://rubygems.org'
 
 gem 'rails', '3.0.19'
@@ -8,7 +10,7 @@ gem 'aws-s3'
 gem 'paperclip', '>= 3.0'
 gem 'aws-sdk'
 gem 'pg'
-gem 'thin'
+gem 'unicorn'
 gem 'newrelic_rpm'
 
 group :development do
