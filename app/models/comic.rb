@@ -1,3 +1,5 @@
+require 'paperclip'
+
 class Comic < ActiveRecord::Base
   before_validation :sluggify
 
@@ -5,13 +7,15 @@ class Comic < ActiveRecord::Base
   validates :date,  :presence => true
   validates :blurb, :presence => true
   validates :slug,  :presence => true
+  attr_accessible :photo
+  attr_accessible :thumbnail
 
   attr_accessor :url
 
-  has_attached_file :photo, 
-                      { 
-                        :styles => { 
-                          :thumb=> "100x100#", 
+  has_attached_file :photo,
+                      {
+                        :styles => {
+                          :thumb=> "100x100#",
                           :prev => "200>x1",
                           :display => "800>x1",
                           :wide => "1000>x1",
@@ -19,9 +23,9 @@ class Comic < ActiveRecord::Base
                         :url => "/system/:attachment/:id/:style/:filename",
                       }.merge(PAPERCLIP_STORAGE_CONFIG || {})
 
-  has_attached_file :thumbnail, 
-                      { 
-                        :styles => { 
+  has_attached_file :thumbnail,
+                      {
+                        :styles => {
                           :display => "500x500",
                           :thumb=> "100x100#",
                           :fb=> "200x200#",
