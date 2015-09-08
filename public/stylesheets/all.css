@@ -194,7 +194,7 @@ div#everything {
 }
 
 .title-block {
-  width: 600px;
+  width: 760px;
   float: left;
   left: 5px;
   position: relative;
@@ -207,7 +207,7 @@ div#everything {
   height: 100px;
 }
 .title-block .title {
-  width: 490px;
+  width: 650px;
   float: right;
 }
 .title-block .date {
@@ -218,7 +218,7 @@ div#everything {
 
 #comic #blurb {
   font-size: 16px;
-  width: 600px;
+  width: 760px;
   float: left;
   color: #000000;
   position: relative;
@@ -231,7 +231,7 @@ div#everything {
 }
 #comic #comments {
   padding-right: 5px;
-  width: 600px;
+  width: 760px;
   float: left;
 }
 
@@ -242,7 +242,7 @@ div#everything {
 #right_ad_rail {
   float: right;
   padding: 10px 0;
-  width: 360px;
+  width: 235px;
   text-align: center;
   color: #888;
   position: relative;
