@@ -15,12 +15,13 @@ Webcomic::Application.routes.draw do
   resources :goodies
 
 # Comics
-  match 'comics/feed' => 'comics#feed'
   match 'comics/latest' => 'comics#latest'
+  match 'comics/feed' => 'comics#feed'
   match 'feed' => 'comics#feed',
         :as => 'feed',
         :defaults => { :format => 'atom' }
   match 'comics/:id/destroy' => 'comics#destroy'
+
   resources :comics
   get '/:slug' => 'comics#show_by_slug', :as => 'show_by_slug'
 

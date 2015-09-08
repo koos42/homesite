@@ -7,8 +7,15 @@ class Comic < ActiveRecord::Base
   validates :date,  :presence => true
   validates :blurb, :presence => true
   validates :slug,  :presence => true
-  attr_accessible :photo
-  attr_accessible :thumbnail
+
+  attr_accessible :photo,
+                  :thumbnail,
+                  :title,
+                  :date,
+                  :blurb,
+                  :slug,
+                  :publish,
+                  :url
 
   attr_accessor :url
 

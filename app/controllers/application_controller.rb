@@ -1,6 +1,5 @@
 class ApplicationController < ActionController::Base
   protect_from_forgery
-  before_filter :any_goodies?
 
   unless Rails.application.config.consider_all_requests_local
     rescue_from Exception, :with => :render_error
@@ -10,10 +9,8 @@ class ApplicationController < ActionController::Base
     rescue_from ActionController::UnknownAction, :with => :render_not_found
   end
 
+private
 
-  # PRIVATES!!!
-  private
-  
   def require_author_status
     unless current_user && current_user.is_author
       flash[:alert] = "You've gotta be an author to pull that."
@@ -29,9 +26,4 @@ class ApplicationController < ActionController::Base
     #TODO: insert logging stuff....
     render :template => "/errors/five_hundred.html.erb", :status => 500
   end
-
-  def any_goodies?
-    @haz_goodies = Goody.any?
-  end
-
 end

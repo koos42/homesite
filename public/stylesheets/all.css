@@ -2,8 +2,8 @@ html, body, div, img, h1, h2, h3, h4, h5, a { margin: 0; padding: 0; border: non
 a:hover, a:active, a:visited, a:link { text-decoration: none; color: #000000; }
 
 div.notice, div.alert {
-  line-height: 0;
-  position: absolute;
+  float: right;
+  margin-top: 2px;
 }
 
 html {
@@ -48,24 +48,35 @@ div#everything {
 }
 
 #logo {
+  text-align: left;
+  height: 130px;
+  width: 300px;
   text-align: center;
-  background: url(/images/logo.gif) no-repeat right top;
-  height: 155px;
   z-index: 20;
-  margin: auto;
+  float: left;
+}
+
+#logo div {
+  position: relative;
+  margin-bottom: -15px;
 }
 
 #logo h1{
   position: relative;
-  top: 42px;
-  right: 70px;
-  font-size: 92px;
+  right: 0px;
+  font-size: 52px;
+  font-weight: 900;
 }
 
 #top_nav {
   padding: 5px 0 7px ;
   background: #000000;
   color: #FFFFFF;
+  float: right;
+  margin-top: 60px;
+  margin-bottom: 20px;
+  width: 710px;
+  text-align: center;
 }
 
 #top_nav a {
@@ -89,6 +100,7 @@ div#everything {
   float: none;
 }
 #content {
+  clear: both;
   text-align: left;
   margin:auto;
   margin-top: 0;
