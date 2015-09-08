@@ -1,6 +1,7 @@
 class ComicsController < ApplicationController
-  before_filter :authenticate_user!, :except => [:latest, :show, :show_by_slug, :index, :latest, :feed, :prev, :next]
-  before_filter :require_author_status, :except => [:latest, :show, :show_by_slug, :index, :latest, :feed, :prev, :next]
+  UnprotectedActions = %w[ latest show show_by_slug index latest feed prev next ].freeze
+  before_filter :authenticate_user!, :except => UnprotectedActions
+  before_filter :require_author_status, :except => UnprotectedActions
 
   # GET /comics
   # GET /comics.xml
@@ -17,7 +18,7 @@ class ComicsController < ApplicationController
     @comic = Comic.where(:publish => true).where("date <= ?",DateTime.now.to_date).order('date desc').first
     show_comic
   end
-  
+
   # GET /comics/1
   # GET /comics/1.xml
   def show
@@ -36,13 +37,13 @@ class ComicsController < ApplicationController
   def next
     comic0 = Comic.find(params[:id])
     if comic0
-      @comic = Comic.where("date > ?", comic0.date).order("date asc").first 
+      @comic = Comic.where("date > ?", comic0.date).order("date asc").first
     else
       @comic = nil
     end
     show_comic
   end
-  
+
   #takes whatever the id of the comic is, and get the next one.
   def prev
     comic0 = Comic.find(params[:id])
@@ -118,19 +119,21 @@ class ComicsController < ApplicationController
     end
   end
 
-  private
+private
+
   def show_comic
     #populate the first and last links
-    #TODO get rid of these, they're no longer used...
-    @latest_comic = Comic.where(:publish => true).where("date <= ?",DateTime.now.to_date).order('date desc').first
-    @first_comic = Comic.where(:publish => true).where("date <= ?",DateTime.now.to_date).order('date asc').first
+    @latest_comic = Comic.where(:publish => true)
+                         .where("date <= ?",DateTime.now.to_date)
+                         .order('date desc')
+                         .first
+    @first_comic = Comic.where(:publish => true)
+                        .where( "date <= ?",DateTime.now.to_date)
+                        .order('date asc')
+                        .first
 
-    # allow only authors to view unpublished comics. Everyone else goes to index.
-    if !@comic || !(( @comic.publish && @comic.date <= DateTime.now.to_date) || (current_user && current_user.is_author) )
-      puts DateTime.now.to_date
-      puts DateTime.now
-      params.delete :id
-      redirect_to(:action => :latest) and return
+    unless (comic_is_currently_published || (current_user && current_user.is_author))
+      @comic = @latest_comic
     end
 
     respond_to do |format|
@@ -138,7 +141,7 @@ class ComicsController < ApplicationController
       format.xml  { render :xml => @comic }
     end
   end
-  
+
   def get_comics
     if current_user && current_user.is_author
       comics = Comic.order('date asc')
@@ -149,4 +152,11 @@ class ComicsController < ApplicationController
     comics
   end
 
+  def any_comics?
+    get_comics.any?
+  end
+
+  def comic_is_currently_published
+    @comic && @comic.publish && @comic.data <= DateTime.now.to_date
+  end
 end

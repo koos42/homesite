@@ -15,6 +15,8 @@ gem 'newrelic_rpm'
 
 group :development do
   gem 'sqlite3'
+  gem 'debugger'
+  gem 'pry'
 end
 
 group :production do

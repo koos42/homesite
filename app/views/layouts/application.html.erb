@@ -49,7 +49,7 @@
       <div id="archive_link">
         <%= link_to "Archive", comics_path %>
       </div>
-      <% if @haz_goodies || user_is_author? %>
+      <% if  any_goodies? || user_is_author? %>
         <div id="goodies_link">
           <%= link_to "Goodies", goodies_path %>
         </div>
