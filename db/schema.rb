@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20121006211341) do
+ActiveRecord::Schema.define(:version => 20150908224446) do
 
   create_table "comics", :force => true do |t|
     t.string   "title"
