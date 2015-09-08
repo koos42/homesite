@@ -2,8 +2,8 @@ html, body, div, img, h1, h2, h3, h4, h5, a { margin: 0; padding: 0; border: non
 a:hover, a:active, a:visited, a:link { text-decoration: none; color: #000000; }
 
 div.notice, div.alert {
-  line-height: 0;
-  position: absolute;
+  float: right;
+  margin-top: 2px;
 }
 
 html {

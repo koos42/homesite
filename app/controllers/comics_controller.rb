@@ -157,6 +157,6 @@ private
   end
 
   def comic_is_currently_published
-    @comic && @comic.publish && @comic.data <= DateTime.now.to_date
+    @comic && @comic.publish && @comic.date <= DateTime.now.to_date
   end
 end
