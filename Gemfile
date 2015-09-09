@@ -13,7 +13,8 @@ gem 'pg'
 gem 'unicorn'
 gem 'newrelic_rpm'
 
-group :development do
+group :development, :test do
+  gem 'rspec-rails', '~> 3.0'
   gem 'sqlite3'
   gem 'debugger'
   gem 'pry'
