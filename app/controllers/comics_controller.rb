@@ -83,7 +83,8 @@ class ComicsController < ApplicationController
       end
     end
   end
-# PUT /comics/1
+
+  # PUT /comics/1
   # PUT /comics/1.xml
   def update
     @comic = Comic.find(params[:id])
@@ -132,7 +133,7 @@ private
                         .order('date asc')
                         .first
 
-    unless (comic_is_currently_published || (current_user && current_user.is_author))
+    unless (@comic.published? || (current_user && current_user.is_author))
       @comic = @latest_comic
     end
 
@@ -154,9 +155,5 @@ private
 
   def any_comics?
     get_comics.any?
-  end
-
-  def comic_is_currently_published
-    @comic && @comic.publish && @comic.date <= DateTime.now.to_date
   end
 end

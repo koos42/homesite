@@ -47,17 +47,17 @@ Webcomic::Application.configure do
   # Send deprecation notices to registered listeners
   config.active_support.deprecation = :notify
 
-  
+
   # Does mailing stuff for devise.
   config.action_mailer.default_url_options = { :host => 'anotherwebcomic.heroku.com' }
 
   GOOGLE_ANALYTICS_ACCOUNT = ENV['GA_ACCOUNT'] || 'UA-1675572-1'
-  
-  PAPERCLIP_STORAGE_CONFIG = { :storage => :s3, 
+
+  PAPERCLIP_STORAGE_CONFIG = { :storage => :s3,
                                :bucket => ENV['S3_BUCKET'],
                                :path => "anotherwebcomic/:attachment/:style/:id.:extension",
                                :s3_credentials => {
                                   :access_key_id => ENV['S3_KEY'],
-                                  :secret_access_key => ENV['S3_SECRET'] }} 
+                                  :secret_access_key => ENV['S3_SECRET'] }}
   FACEBOOK_APP_ID = ENV['FB_APP_ID'] || '273241006081887'
 end

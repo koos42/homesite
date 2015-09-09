@@ -40,9 +40,13 @@ GEM
       uuidtools (~> 2.1)
     bcrypt-ruby (3.0.1)
     builder (2.1.2)
-    cocaine (0.2.1)
+    climate_control (0.0.3)
+      activesupport (>= 3.0)
+    cocaine (0.5.7)
+      climate_control (>= 0.0.3, < 1.0)
     coderay (1.1.0)
     columnize (0.9.0)
+    database_cleaner (1.5.0)
     debugger (1.6.8)
       columnize (>= 0.3.1)
       debugger-linecache (~> 1.2.0)
@@ -77,11 +81,10 @@ GEM
     newrelic_rpm (3.4.0.1)
     nokogiri (1.5.5)
     orm_adapter (0.0.7)
-    paperclip (3.1.2)
+    paperclip (4.2.2)
       activemodel (>= 3.0.0)
-      activerecord (>= 3.0.0)
       activesupport (>= 3.0.0)
-      cocaine (>= 0.0.2)
+      cocaine (~> 0.5.3)
       mime-types
     pg (0.14.0)
     polyglot (0.3.3)
@@ -151,11 +154,12 @@ PLATFORMS
 DEPENDENCIES
   aws-s3
   aws-sdk
+  database_cleaner
   debugger
   devise
   jquery-rails (>= 1.0.12)
   newrelic_rpm
-  paperclip (>= 3.0)
+  paperclip (~> 4.0)
   pg
   pry
   rails (= 3.0.19)

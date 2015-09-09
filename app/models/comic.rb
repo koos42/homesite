@@ -8,6 +8,7 @@ class Comic < ActiveRecord::Base
   validates :blurb, :presence => true
   validates :slug,  :presence => true
 
+
   has_many :comic_tags
   has_many :tags, through: :comic_tags
 
@@ -18,10 +19,7 @@ class Comic < ActiveRecord::Base
                   :blurb,
                   :slug,
                   :publish,
-                  :url,
                   :tags
-
-  attr_accessor :url
 
   has_attached_file :photo,
                       {
@@ -45,9 +43,19 @@ class Comic < ActiveRecord::Base
                         :url => "/system/:attachment/:id/:style/:filename",
                       }.merge(PAPERCLIP_STORAGE_CONFIG || {})
 
+  # this must go after the `has_attached_file` bits
+  validates_attachment_content_type :photo, :content_type => ['image/jpeg', 'image/jpg', 'image/png', 'image/gif']
+  validates_attachment_content_type :thumbnail, :content_type => ['image/jpeg', 'image/jpg', 'image/png', 'image/gif']
+
+  attr_accessor :url
+
   def next
     if !@next
-      @next = Comic.where("date > ?", date).where("date <= ?", DateTime.now).where(:publish => true).order("date asc").first
+      @next = Comic.where("date > ?", date)
+                   .where("date <= ?", DateTime.now)
+                   .where(:publish => true)
+                   .order("date asc")
+                   .first
     else
       @next
     end
@@ -55,7 +63,11 @@ class Comic < ActiveRecord::Base
 
   def prev
     if !@prev
-      @prev = Comic.where("date < ?", date).where("date <= ?", DateTime.now).where(:publish => true).order("date desc").first
+      @prev = Comic.where("date < ?", date)
+                   .where("date <= ?", DateTime.now)
+                   .where(:publish => true)
+                   .order("date desc")
+                   .first
     else
       @prev
     end
@@ -71,7 +83,10 @@ class Comic < ActiveRecord::Base
     !(self.thumbnail.url =~ /missing\.(png|gif|jpg|jpeg)/ ) ? self.thumbnail.url(size) : self.photo.url(size)
   end
 
-  private
+  def published?
+    date <= Date.today && publish
+  end
+
   def sluggify
     self.slug = self.slug ? self.slug :
                 self.title.downcase.gsub(/[^(\w\s)]/,'').gsub(/\s/, '_')
