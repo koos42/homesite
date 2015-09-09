@@ -1,12 +1,17 @@
 class CreateTags < ActiveRecord::Migration
-  def change
+  def self.up
     create_table :tags do |t|
       t.string :tag
     end
 
-    create_join_table :comics, :tags do |t|
-      t.index [:comic_id, :tag_id]
-      t.index [:tag_id, :comic_id]
+    create_table :comic_tags do |t|
+      t.references :comic, index: true
+      t.references :tag,   index: true
     end
+  end
+
+  def self.down
+    drop_table :tags
+    drop_table :comic_tags
   end
 end

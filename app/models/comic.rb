@@ -8,6 +8,9 @@ class Comic < ActiveRecord::Base
   validates :blurb, :presence => true
   validates :slug,  :presence => true
 
+  has_many :comic_tags
+  has_many :tags, through: :comic_tags
+
   attr_accessible :photo,
                   :thumbnail,
                   :title,
@@ -15,7 +18,8 @@ class Comic < ActiveRecord::Base
                   :blurb,
                   :slug,
                   :publish,
-                  :url
+                  :url,
+                  :tags
 
   attr_accessor :url
 
