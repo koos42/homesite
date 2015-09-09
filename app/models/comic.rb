@@ -44,8 +44,9 @@ class Comic < ActiveRecord::Base
                       }.merge(PAPERCLIP_STORAGE_CONFIG || {})
 
   # this must go after the `has_attached_file` bits
-  validates_attachment_content_type :photo, :content_type => ['image/jpeg', 'image/jpg', 'image/png', 'image/gif']
-  validates_attachment_content_type :thumbnail, :content_type => ['image/jpeg', 'image/jpg', 'image/png', 'image/gif']
+  ACCEPTED_IMAGE_TYPES = %w[ image/jpeg image/jpg image/png image/gif ]
+  validates_attachment_content_type :photo, :content_type => ACCEPTED_IMAGE_TYPES
+  validates_attachment_content_type :thumbnail, :content_type => ACCEPTED_IMAGE_TYPES
 
   attr_accessor :url
 
