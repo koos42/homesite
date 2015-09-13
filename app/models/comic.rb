@@ -9,8 +9,8 @@ class Comic < ActiveRecord::Base
   validates :slug,  :presence => true
 
 
-  has_many :comic_tags
-  has_many :tags, through: :comic_tags
+  has_many :comic_tags, uniq: true
+  has_many :tags, through: :comic_tags, uniq: true
 
   attr_accessible :photo,
                   :thumbnail,
