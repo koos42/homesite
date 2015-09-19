@@ -14,7 +14,7 @@ private
   def require_author_status
     unless current_user && current_user.is_author
       flash[:alert] = "You've gotta be an author to pull that."
-      return self.latest
+      render controller: :comic, action: :latest
     end
   end
 

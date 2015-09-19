@@ -11,8 +11,12 @@ Webcomic::Application.routes.draw do
   resources :users
 
 # Goodies
-  match 'goodies/:id/destroy' => 'goodies#destroy', :as => 'destroy_goody'
+  match 'goodies/:id/destroy' => 'goodies#destroy', as: 'destroy_goody'
   resources :goodies
+
+# Tags
+  match 'tags/:id/destroy' => 'tags#destroy', as: "destroy_tag"
+  resources :tags
 
 # Comics
   match 'comics/latest' => 'comics#latest'
@@ -23,7 +27,7 @@ Webcomic::Application.routes.draw do
   match 'comics/:id/destroy' => 'comics#destroy'
 
   resources :comics
-  get '/:slug' => 'comics#show_by_slug', :as => 'show_by_slug'
+  get '/:slug' => 'comics#show_by_slug', as: 'show_by_slug'
 
 # Catch all for custom 404/500s
   get "errors/four_oh_four"
