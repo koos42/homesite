@@ -1,0 +1,11 @@
+<div id="tag">
+  <h2> Comics tagged "<%= render partial: 'tag', locals: { tag: @tag } %>"</h2>
+  <div id="comics-by-tag">
+    <%= render partial: 'comics/minimal_comic', collection: @tag.comics, as: :comic %>
+  </div>
+  <% if user_is_author? %>
+    <div id="tag-controls" class="clear">
+      <%= link_to("Edit", action: :edit) %>
+    </div>
+  <% end %>
+</div>

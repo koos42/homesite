@@ -15,8 +15,8 @@ Webcomic::Application.routes.draw do
   resources :goodies
 
 # Tags
-  match 'tags/:id/destroy' => 'tags#destroy', as: "destroy_tag"
   resources :tags
+  match 'tags/:id/destroy' => 'tags#destroy', as: "destroy_tag"
 
 # Comics
   match 'comics/latest' => 'comics#latest'

@@ -4,7 +4,7 @@ class TagsController < ApplicationController
   before_filter :require_author_status, :except => UnprotectedActions
 
   def index
-    @tags = Tag.all
+    @tags = Tag.all.select { |t| !t.nil? }
   end
 
   def show
