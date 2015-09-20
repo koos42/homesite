@@ -1,1 +1,1 @@
-<%= link_to("#{tag.tag}", action: :show, id: tag) %>
+<%= link_to "#{tag.tag}", { controller: :tags, action: :show, id: tag}, class: 'tag-link' %>

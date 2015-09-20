@@ -63,6 +63,11 @@
     <%= image_tag (comic.thumbnail_url), :class => 'thumbnail' %>
     <h1 class="title"><%= comic.title %></h1>
     <div class="date"><%= comic.date %></div>
+    <% if comic.tags.any? %>
+      <div class="tags">
+        Tags: <%= render partial: "tags/tag", collection: comic.tags, as: :tag %>
+      </div>
+    <% end %>
   </div>
   <div id="blurb" class="float-left"><%= raw(comic.blurb) %></div>
   <div id="comments" >
