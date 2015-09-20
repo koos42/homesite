@@ -7,9 +7,8 @@
   The topics change and the comics stay funny.
 <% end %>
 
-<% @comics.each do |comic| %>
-  <%= render :partial => 'minimal_comic', :locals => {:comic => comic} %>
-<% end %>
+<%= render partial: 'minimal_comic', collection: @comics, as: :comic %>
+
 <% if user_is_author? %>
   <div class="new_comic">
     <%= link_to('+ New Comic', new_comic_path) %>
