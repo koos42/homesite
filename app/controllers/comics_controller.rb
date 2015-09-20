@@ -71,13 +71,7 @@ class ComicsController < ApplicationController
   # POST /comics
   # POST /comics.xml
   def create
-    comic_params = params[:comic]
-    tag_texts = comic_params.delete(:tags).split(',').map(&:strip)
-    tags = tag_texts.map do |tag_text|
-      Tag.find_by_tag(tag_text) || Tag.new(tag: tag_text)
-    end
-    comic_params[:tags] = tags
-    @comic = Comic.new(comic_params)
+    @comic = Comic.new(munged_comic_params)
 
     respond_to do |format|
       if @comic.save
@@ -93,16 +87,10 @@ class ComicsController < ApplicationController
   # PUT /comics/1
   # PUT /comics/1.xml
   def update
-    comic_params = params[:comic]
-    tag_texts = comic_params.delete(:tags).split(',').map(&:strip)
-    tags = tag_texts.map do |tag_text|
-      Tag.find_by_tag(tag_text) || Tag.new(tag: tag_text)
-    end
-    comic_params[:tags] = tags
     @comic = Comic.find(params[:id])
 
     respond_to do |format|
-      if @comic.update_attributes(params[:comic])
+      if @comic.update_attributes(munged_comic_params)
         format.html { redirect_to(@comic, :notice => 'Comic was successfully updated.') }
         format.xml  { head :ok }
       else
@@ -167,5 +155,15 @@ private
 
   def any_comics?
     get_comics.any?
+  end
+
+  def munged_comic_params
+    comic_params = params[:comic]
+    tag_texts = comic_params.delete(:tags).split(',').map(&:strip)
+    tags = tag_texts.map do |tag_text|
+      Tag.find_by_tag(tag_text) || Tag.new(tag: tag_text)
+    end
+    comic_params[:tags] = tags
+    comic_params
   end
 end
