@@ -71,7 +71,13 @@ class ComicsController < ApplicationController
   # POST /comics
   # POST /comics.xml
   def create
-    @comic = Comic.new(params[:comic])
+    comic_params = params[:comic]
+    tag_texts = comic_params.delete(:tags).split(',').map(&:strip)
+    tags = tag_texts.map do |tag_text|
+      Tag.find_by_tag(tag_text) || Tag.new(tag: tag_text)
+    end
+    comic_params[:tags] = tags
+    @comic = Comic.new(comic_params)
 
     respond_to do |format|
       if @comic.save
@@ -87,6 +93,12 @@ class ComicsController < ApplicationController
   # PUT /comics/1
   # PUT /comics/1.xml
   def update
+    comic_params = params[:comic]
+    tag_texts = comic_params.delete(:tags).split(',').map(&:strip)
+    tags = tag_texts.map do |tag_text|
+      Tag.find_by_tag(tag_text) || Tag.new(tag: tag_text)
+    end
+    comic_params[:tags] = tags
     @comic = Comic.find(params[:id])
 
     respond_to do |format|

@@ -41,6 +41,10 @@
     <%= f.label :thumbnail%><br />
     <%= f.file_field :thumbnail%>
   </div>
+  <div class="field">
+    <%= f.label "Add tags"%>
+    <%= f.text_field :tags, value: (@comic.tags.any? ? @comic.tags.map(&:tag).join(', ') : '') %>
+  </div>
   <div class="actions">
     <%= f.submit %>
   </div>
