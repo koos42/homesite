@@ -7,6 +7,7 @@ class ComicsController < ApplicationController
   # GET /comics.xml
   def index
     @comics = get_comics
+    @tags = Tag.all.select { |t| t.comics.any? }
     respond_to do |format|
       format.html # index.html.erb
       format.xml  { render :xml => @comics }
@@ -71,7 +72,7 @@ class ComicsController < ApplicationController
   # POST /comics
   # POST /comics.xml
   def create
-    @comic = Comic.new(params[:comic])
+    @comic = Comic.new(munged_comic_params)
 
     respond_to do |format|
       if @comic.save
@@ -83,13 +84,14 @@ class ComicsController < ApplicationController
       end
     end
   end
-# PUT /comics/1
+
+  # PUT /comics/1
   # PUT /comics/1.xml
   def update
     @comic = Comic.find(params[:id])
 
     respond_to do |format|
-      if @comic.update_attributes(params[:comic])
+      if @comic.update_attributes(munged_comic_params)
         format.html { redirect_to(@comic, :notice => 'Comic was successfully updated.') }
         format.xml  { head :ok }
       else
@@ -132,7 +134,7 @@ private
                         .order('date asc')
                         .first
 
-    unless (comic_is_currently_published || (current_user && current_user.is_author))
+    unless (@comic.published? || (current_user && current_user.is_author))
       @comic = @latest_comic
     end
 
@@ -156,7 +158,13 @@ private
     get_comics.any?
   end
 
-  def comic_is_currently_published
-    @comic && @comic.publish && @comic.date <= DateTime.now.to_date
+  def munged_comic_params
+    comic_params = params[:comic]
+    tag_texts = comic_params.delete(:tags).split(',').map(&:strip)
+    tags = tag_texts.map do |tag_text|
+      Tag.find_by_tag(tag_text) || Tag.new(tag: tag_text)
+    end
+    comic_params[:tags] = tags
+    comic_params
   end
 end

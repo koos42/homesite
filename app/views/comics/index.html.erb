@@ -7,9 +7,20 @@
   The topics change and the comics stay funny.
 <% end %>
 
-<% @comics.each do |comic| %>
-  <%= render :partial => 'minimal_comic', :locals => {:comic => comic} %>
+<% if @tags && @tags.any? %>
+  <div id="all-tags">
+    <h2>All Tags</h2>
+    <%= render partial: 'tags/tag_list', locals: { tag_list: @tags } %>
+  </div>
 <% end %>
+
+<% if @comics && @comics.any? %>
+  <div id="all-comics">
+    <h2>All Comics</h2>
+    <%= render partial: 'minimal_comic', collection: @comics, as: :comic %>
+  </div>
+<% end %>
+
 <% if user_is_author? %>
   <div class="new_comic">
     <%= link_to('+ New Comic', new_comic_path) %>

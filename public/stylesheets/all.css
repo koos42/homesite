@@ -106,6 +106,16 @@ div#everything {
   margin-top: 0;
   padding-top: 10px;
 }
+#all-tags {}
+#all-tags h2 {
+  margin-bottom: 10px;
+}
+#all-comics {
+  margin-top: 30px;
+}
+#all-comics h2 {
+  margin-bottom: 10px;
+}
 .minimal_comic {
   width: 100px;
   height: 100px;
@@ -193,6 +203,10 @@ div#everything {
   bottom: 1px;
 }
 
+a.tag-link {
+  text-decoration: underline;
+}
+
 .title-block {
   width: 760px;
   float: left;
@@ -211,6 +225,13 @@ div#everything {
   float: right;
 }
 .title-block .date {
+  width: 620px;
+  float: left;
+  clear: right;
+  margin-left: 12px;
+}
+.title-block .tags {
+  width: 620px;
   float: left;
   clear: right;
   margin-left: 12px;
@@ -237,6 +258,17 @@ div#everything {
 
 #comic #blurb a {
   text-decoration: underline;
+}
+
+#comic #related-comics {
+  float: left;
+  width: 100%;
+  padding-left: 30px;
+}
+#comic h3#related-comics-label {
+  clear: left;
+  width: 100%;
+  float: left;
 }
 
 #right_ad_rail {

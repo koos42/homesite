@@ -1,3 +1,54 @@
+GIT
+  remote: git://github.com/rspec/rspec-core.git
+  revision: 93e5001b5ae6b299d3efaa727884f6fbaec5b32a
+  specs:
+    rspec-core (3.4.0.pre)
+      rspec-support (= 3.4.0.pre)
+
+GIT
+  remote: git://github.com/rspec/rspec-expectations.git
+  revision: 7f0d1f6a68fdfa6e8a06518a51e54833baafa2c0
+  specs:
+    rspec-expectations (3.4.0.pre)
+      diff-lcs (>= 1.2.0, < 2.0)
+      rspec-support (= 3.4.0.pre)
+
+GIT
+  remote: git://github.com/rspec/rspec-mocks.git
+  revision: abb875d2cc10998d407b07c93d5686675d36b61c
+  specs:
+    rspec-mocks (3.4.0.pre)
+      diff-lcs (>= 1.2.0, < 2.0)
+      rspec-support (= 3.4.0.pre)
+
+GIT
+  remote: git://github.com/rspec/rspec-rails.git
+  revision: c1de0e2ced37f1a005fd16948a770661d34264e6
+  specs:
+    rspec-rails (3.4.0.pre)
+      actionpack (>= 3.0, < 4.3)
+      activesupport (>= 3.0, < 4.3)
+      railties (>= 3.0, < 4.3)
+      rspec-core (= 3.4.0.pre)
+      rspec-expectations (= 3.4.0.pre)
+      rspec-mocks (= 3.4.0.pre)
+      rspec-support (= 3.4.0.pre)
+
+GIT
+  remote: git://github.com/rspec/rspec-support.git
+  revision: 838e6aab14cd472e860b41503c670a6ef5cf9606
+  specs:
+    rspec-support (3.4.0.pre)
+
+GIT
+  remote: git://github.com/rspec/rspec.git
+  revision: a064ad487c843770126b9d6dc1e28be689ef09a6
+  specs:
+    rspec (3.4.0.pre)
+      rspec-core (= 3.4.0.pre)
+      rspec-expectations (= 3.4.0.pre)
+      rspec-mocks (= 3.4.0.pre)
+
 GEM
   remote: http://rubygems.org/
   specs:
@@ -40,9 +91,13 @@ GEM
       uuidtools (~> 2.1)
     bcrypt-ruby (3.0.1)
     builder (2.1.2)
-    cocaine (0.2.1)
+    climate_control (0.0.3)
+      activesupport (>= 3.0)
+    cocaine (0.5.7)
+      climate_control (>= 0.0.3, < 1.0)
     coderay (1.1.0)
     columnize (0.9.0)
+    database_cleaner (1.5.0)
     debugger (1.6.8)
       columnize (>= 0.3.1)
       debugger-linecache (~> 1.2.0)
@@ -53,6 +108,7 @@ GEM
       bcrypt-ruby (~> 3.0)
       orm_adapter (~> 0.0.3)
       warden (~> 1.1)
+    diff-lcs (1.2.5)
     erubis (2.6.6)
       abstract (>= 1.0.0)
     httparty (0.8.3)
@@ -76,11 +132,10 @@ GEM
     newrelic_rpm (3.4.0.1)
     nokogiri (1.5.5)
     orm_adapter (0.0.7)
-    paperclip (3.1.2)
+    paperclip (4.2.2)
       activemodel (>= 3.0.0)
-      activerecord (>= 3.0.0)
       activesupport (>= 3.0.0)
-      cocaine (>= 0.0.2)
+      cocaine (~> 0.5.3)
       mime-types
     pg (0.14.0)
     polyglot (0.3.3)
@@ -133,14 +188,24 @@ PLATFORMS
 DEPENDENCIES
   aws-s3
   aws-sdk
+  database_cleaner
   debugger
   devise
   jquery-rails (>= 1.0.12)
   newrelic_rpm
-  paperclip (>= 3.0)
+  paperclip (~> 4.0)
   pg
   pry
   rails (= 3.0.19)
   rake (= 0.8.7)
+  rspec!
+  rspec-core!
+  rspec-expectations!
+  rspec-mocks!
+  rspec-rails!
+  rspec-support!
   sqlite3
   unicorn
+
+BUNDLED WITH
+   1.10.6

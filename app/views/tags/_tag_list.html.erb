@@ -1,0 +1,5 @@
+<% tag_list.each do |tag| %>
+  <%= render partial: "tags/tag", locals: { tag: tag } %>
+  <%= link_to("(#{tag.comics.count})", controller: :tags,  action: :show, id: tag.id) %>
+  <%= ',' unless tag == tag_list.last %>
+<% end %>

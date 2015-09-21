@@ -11,7 +11,12 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20121006211341) do
+ActiveRecord::Schema.define(:version => 20150908224446) do
+
+  create_table "comic_tags", :force => true do |t|
+    t.integer "comic_id"
+    t.integer "tag_id"
+  end
 
   create_table "comics", :force => true do |t|
     t.string   "title"
@@ -39,6 +44,10 @@ ActiveRecord::Schema.define(:version => 20121006211341) do
     t.string   "goody_file_file_name"
     t.integer  "goody_file_file_size"
     t.string   "goody_file_content_type"
+  end
+
+  create_table "tags", :force => true do |t|
+    t.string "tag"
   end
 
   create_table "users", :force => true do |t|

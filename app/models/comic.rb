@@ -1,4 +1,5 @@
 require 'paperclip'
+require 'set'
 
 class Comic < ActiveRecord::Base
   before_validation :sluggify
@@ -8,16 +9,11 @@ class Comic < ActiveRecord::Base
   validates :blurb, :presence => true
   validates :slug,  :presence => true
 
-  attr_accessible :photo,
-                  :thumbnail,
-                  :title,
-                  :date,
-                  :blurb,
-                  :slug,
-                  :publish,
-                  :url
+  has_many :comic_tags, uniq: true
+  has_many :tags, through: :comic_tags, uniq: true
 
-  attr_accessor :url
+  attr_accessible :photo, :thumbnail, :title, :date, :blurb,
+                  :slug, :publish, :tags
 
   has_attached_file :photo,
                       {
@@ -41,9 +37,20 @@ class Comic < ActiveRecord::Base
                         :url => "/system/:attachment/:id/:style/:filename",
                       }.merge(PAPERCLIP_STORAGE_CONFIG || {})
 
+  # this must go after the `has_attached_file` bits
+  ACCEPTED_IMAGE_TYPES = %w[ image/jpeg image/jpg image/png image/gif ]
+  validates_attachment_content_type :photo, :content_type => ACCEPTED_IMAGE_TYPES
+  validates_attachment_content_type :thumbnail, :content_type => ACCEPTED_IMAGE_TYPES
+
+  attr_accessor :url
+
   def next
     if !@next
-      @next = Comic.where("date > ?", date).where("date <= ?", DateTime.now).where(:publish => true).order("date asc").first
+      @next = Comic.where("date > ?", date)
+                   .where("date <= ?", DateTime.now)
+                   .where(:publish => true)
+                   .order("date asc")
+                   .first
     else
       @next
     end
@@ -51,7 +58,11 @@ class Comic < ActiveRecord::Base
 
   def prev
     if !@prev
-      @prev = Comic.where("date < ?", date).where("date <= ?", DateTime.now).where(:publish => true).order("date desc").first
+      @prev = Comic.where("date < ?", date)
+                   .where("date <= ?", DateTime.now)
+                   .where(:publish => true)
+                   .order("date desc")
+                   .first
     else
       @prev
     end
@@ -67,9 +78,20 @@ class Comic < ActiveRecord::Base
     !(self.thumbnail.url =~ /missing\.(png|gif|jpg|jpeg)/ ) ? self.thumbnail.url(size) : self.photo.url(size)
   end
 
-  private
+  def published?
+    date <= Date.today && publish
+  end
+
   def sluggify
     self.slug = self.slug ? self.slug :
                 self.title.downcase.gsub(/[^(\w\s)]/,'').gsub(/\s/, '_')
+  end
+
+  def related_comics(n)
+    @related_comics ||= tags.flat_map { |tag| tag.comics }
+      .select(&:published?)
+      .reject { |comic| comic.id == id }
+      .uniq
+      .sample(n)
   end
 end
