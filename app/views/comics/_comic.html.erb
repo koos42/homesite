@@ -70,6 +70,13 @@
     <% end %>
   </div>
   <div id="blurb" class="float-left"><%= raw(comic.blurb) %></div>
+  <% if comic.related_comics(6) %>
+    <h3 id="related-comics-label" class="clear-left">Related Comics</h3>
+    <div id="related-comics" class="clear-left">
+      <%= render partial: 'minimal_comic', collection: comic.related_comics(5), as: :comic %>
+      <div class="clear-left"></div>
+    </div>
+  <% end %>
   <div id="comments" >
     <%= render :partial => 'comments', :locals => { :comic => comic } %>
   </div>

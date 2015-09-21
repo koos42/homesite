@@ -88,10 +88,10 @@ class Comic < ActiveRecord::Base
   end
 
   def related_comics(n)
-    related_comics = tags.flat_map do |tag|
-      tag.comics
-    end
-    related = related_comics.reject { |comic| comic.id == id }
-    related.uniq.select(&:published?).sample(n)
+    @related_comics ||= tags.flat_map { |tag| tag.comics }
+      .select(&:published?)
+      .reject { |comic| comic.id == id }
+      .uniq
+      .sample(n)
   end
 end

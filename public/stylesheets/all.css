@@ -106,6 +106,16 @@ div#everything {
   margin-top: 0;
   padding-top: 10px;
 }
+#all-tags {}
+#all-tags h2 {
+  margin-bottom: 10px;
+}
+#all-comics {
+  margin-top: 30px;
+}
+#all-comics h2 {
+  margin-bottom: 10px;
+}
 .minimal_comic {
   width: 100px;
   height: 100px;
@@ -248,6 +258,10 @@ a.tag-link {
 
 #comic #blurb a {
   text-decoration: underline;
+}
+
+#comic #related-comics {
+  padding-left: 30px;
 }
 
 #right_ad_rail {
