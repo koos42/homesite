@@ -261,7 +261,14 @@ a.tag-link {
 }
 
 #comic #related-comics {
+  float: left;
+  width: 100%;
   padding-left: 30px;
+}
+#comic h3#related-comics-label {
+  clear: left;
+  width: 100%;
+  float: left;
 }
 
 #right_ad_rail {
