@@ -1,4 +1,5 @@
 require 'paperclip'
+require 'set'
 
 class Comic < ActiveRecord::Base
   before_validation :sluggify
@@ -8,18 +9,11 @@ class Comic < ActiveRecord::Base
   validates :blurb, :presence => true
   validates :slug,  :presence => true
 
-
   has_many :comic_tags, uniq: true
   has_many :tags, through: :comic_tags, uniq: true
 
-  attr_accessible :photo,
-                  :thumbnail,
-                  :title,
-                  :date,
-                  :blurb,
-                  :slug,
-                  :publish,
-                  :tags
+  attr_accessible :photo, :thumbnail, :title, :date, :blurb,
+                  :slug, :publish, :tags
 
   has_attached_file :photo,
                       {
@@ -91,5 +85,14 @@ class Comic < ActiveRecord::Base
   def sluggify
     self.slug = self.slug ? self.slug :
                 self.title.downcase.gsub(/[^(\w\s)]/,'').gsub(/\s/, '_')
+  end
+
+  def related_comics(n)
+    related_comics = tags.flat_map do |tag|
+      tag.comics
+    end
+    related = related_comics.reject { |comic| comic.id == id }
+    related.to_set
+    related.sample(n)
   end
 end
