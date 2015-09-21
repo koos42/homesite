@@ -1,8 +1,4 @@
-<h2>Tags!</h2>
-<div id="tags-index">
-  <% @tags.each do |tag| %>
-    <%= render partial: "tag", locals: { tag: tag } %>
-    <%= link_to("(#{tag.comics.count})", action: :show, id: tag.id) %>
-    <%= ',' unless tag == @tags.last %>
-  <% end %>
+<h2>All Tags</h2>
+<div id="all-tags">
+  <%= render partial: 'tag_list', locals: { tag_list: @tags } %>
 </div>

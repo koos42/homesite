@@ -65,7 +65,7 @@
     <div class="date"><%= comic.date %></div>
     <% if comic.tags.any? %>
       <div class="tags">
-        Tags: <%= render partial: "tags/tag", collection: comic.tags, as: :tag %>
+        Tags: <%= render partial: 'tags/tag_list', locals: { tag_list: comic.tags } %>
       </div>
     <% end %>
   </div>

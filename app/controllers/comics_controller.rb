@@ -7,6 +7,7 @@ class ComicsController < ApplicationController
   # GET /comics.xml
   def index
     @comics = get_comics
+    @tags = Tag.all.select { |t| t.comics.any? }
     respond_to do |format|
       format.html # index.html.erb
       format.xml  { render :xml => @comics }
