@@ -92,7 +92,6 @@ class Comic < ActiveRecord::Base
       tag.comics
     end
     related = related_comics.reject { |comic| comic.id == id }
-    related.to_set
-    related.sample(n)
+    related.uniq.select(&:published?).sample(n)
   end
 end

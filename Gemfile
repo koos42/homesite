@@ -14,7 +14,9 @@ gem 'unicorn'
 gem 'newrelic_rpm'
 
 group :development, :test do
-  gem 'rspec-rails', '~> 3.0'
+  %w[ rspec rspec-core rspec-expectations rspec-mocks rspec-support rspec-rails ].each do |lib|
+    gem lib, github: "rspec/#{lib}"
+  end
   gem 'sqlite3'
   gem 'debugger'
   gem 'database_cleaner'
