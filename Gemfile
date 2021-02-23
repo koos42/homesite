@@ -4,7 +4,7 @@ source 'http://rubygems.org'
 
 gem 'rails', '3.0.19'
 gem 'jquery-rails', '>= 1.0.12'
-gem 'rake', '0.8.7'
+gem 'rake', '13.0.3'
 gem 'devise'
 gem 'aws-s3'
 gem 'paperclip', '~> 4.0'
