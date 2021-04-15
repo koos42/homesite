@@ -4,7 +4,7 @@ log/*.log
 tmp/
 .rvmrc
 public/system
-.env
+*.env
 bin/*
 bundle/*
 vendor/*
